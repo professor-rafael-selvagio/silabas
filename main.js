@@ -99,6 +99,10 @@ function cancelSpeech() {
   window.speechSynthesis.cancel();
 }
 
+function toDisplayUppercase(text) {
+  return text.toLocaleUpperCase("pt-BR");
+}
+
 function speakText(text) {
   if (!text.trim()) {
     status.textContent = "Digite uma frase para ouvir.";
@@ -114,8 +118,9 @@ function speakText(text) {
 }
 
 function splitWord(word) {
-  const syllables = syllableEngine.hyphenate(word);
-  return syllables.length ? syllables : [word];
+  const syllables = syllableEngine.hyphenate(word.toLocaleLowerCase("pt-BR"));
+  const normalizedSyllables = syllables.length ? syllables : [word];
+  return normalizedSyllables.map((syllable) => toDisplayUppercase(syllable));
 }
 
 function tokenizeSentence(sentence) {
@@ -178,11 +183,12 @@ function pickRandomSentence(length) {
   }
 
   lastSentenceByGroup[selectedDifficulty][length] = nextSentence;
-  return nextSentence;
+  return toDisplayUppercase(nextSentence);
 }
 
 function renderSentence() {
-  const sentence = input.value.trim();
+  const sentence = toDisplayUppercase(input.value).trim();
+  input.value = sentence;
   output.innerHTML = "";
 
   if (!sentence) {
@@ -279,6 +285,10 @@ fullscreenButton.addEventListener("click", () => {
   });
 });
 
+input.addEventListener("input", () => {
+  input.value = toDisplayUppercase(input.value);
+});
+
 input.addEventListener("keydown", (event) => {
   if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
     renderSentence();
@@ -286,4 +296,5 @@ input.addEventListener("keydown", (event) => {
 });
 
 updateDifficultyButtons();
+input.value = toDisplayUppercase(input.value);
 renderSentence();

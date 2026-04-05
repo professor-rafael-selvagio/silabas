@@ -160,6 +160,7 @@ textarea {
   font-size: 1.15rem;
   color: #17324d;
   background: #fffdf8;
+  text-transform: uppercase;
 }
 
 textarea:focus {
@@ -244,6 +245,7 @@ textarea:focus {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px 0;
+  text-transform: uppercase;
 }
 
 .word {

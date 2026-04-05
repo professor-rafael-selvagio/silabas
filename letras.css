@@ -128,6 +128,18 @@ button {
   align-content: start;
 }
 
+.lesson-grid.is-rows {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.lesson-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
 .lesson-card {
   display: grid;
   gap: 10px;
@@ -185,6 +197,10 @@ button {
   }
 
   .lesson-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lesson-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

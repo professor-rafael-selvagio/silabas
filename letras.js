@@ -13,18 +13,28 @@ const letters = [
   "X", "Z",
 ];
 
-const syllables = [
-  "BA", "BE", "BI", "BO", "BU",
-  "CA", "CE", "CI", "CO", "CU",
-  "DA", "DE", "DI", "DO", "DU",
-  "FA", "FE", "FI", "FO", "FU",
-  "LA", "LE", "LI", "LO", "LU",
-  "MA", "ME", "MI", "MO", "MU",
-  "NA", "NE", "NI", "NO", "NU",
-  "PA", "PE", "PI", "PO", "PU",
-  "SA", "SE", "SI", "SO", "SU",
-  "TA", "TE", "TI", "TO", "TU",
-  "VA", "VE", "VI", "VO", "VU",
+const syllableRows = [
+  ["BA", "BE", "BI", "BO", "BU"],
+  ["CA", "CE", "CI", "CO", "CU"],
+  ["DA", "DE", "DI", "DO", "DU"],
+  ["FA", "FE", "FI", "FO", "FU"],
+  ["GA", "GE", "GI", "GO", "GU"],
+  ["HA", "HE", "HI", "HO", "HU"],
+  ["JA", "JE", "JI", "JO", "JU"],
+  ["KA", "KE", "KI", "KO", "KU"],
+  ["LA", "LE", "LI", "LO", "LU"],
+  ["MA", "ME", "MI", "MO", "MU"],
+  ["NA", "NE", "NI", "NO", "NU"],
+  ["PA", "PE", "PI", "PO", "PU"],
+  ["QUA", "QUE", "QUI", "QUO", "QUU"],
+  ["RA", "RE", "RI", "RO", "RU"],
+  ["SA", "SE", "SI", "SO", "SU"],
+  ["TA", "TE", "TI", "TO", "TU"],
+  ["VA", "VE", "VI", "VO", "VU"],
+  ["WA", "WE", "WI", "WO", "WU"],
+  ["XA", "XE", "XI", "XO", "XU"],
+  ["YA", "YE", "YI", "YO", "YU"],
+  ["ZA", "ZE", "ZI", "ZO", "ZU"],
 ];
 
 const lessonConfig = {
@@ -32,11 +42,13 @@ const lessonConfig = {
     title: "Letras maiúsculas e minúsculas",
     description: "Veja cada letra grande e pequena.",
     items: letters,
+    layout: "grid",
   },
   syllables: {
     title: "Sílabas maiúsculas e minúsculas",
-    description: "Veja sílabas em letra grande e letra pequena.",
-    items: syllables,
+    description: "Veja as sílabas organizadas em linhas por família.",
+    items: syllableRows,
+    layout: "rows",
   },
 };
 
@@ -71,6 +83,31 @@ function createCard(text) {
   return card;
 }
 
+function renderGrid(items) {
+  const fragment = document.createDocumentFragment();
+  items.forEach((item) => {
+    fragment.append(createCard(item));
+  });
+  lessonGrid.append(fragment);
+}
+
+function renderRows(rows) {
+  const fragment = document.createDocumentFragment();
+
+  rows.forEach((row) => {
+    const rowElement = document.createElement("div");
+    rowElement.className = "lesson-row";
+
+    row.forEach((item) => {
+      rowElement.append(createCard(item));
+    });
+
+    fragment.append(rowElement);
+  });
+
+  lessonGrid.append(fragment);
+}
+
 function setActiveLesson(mode) {
   const config = lessonConfig[mode];
 
@@ -80,13 +117,15 @@ function setActiveLesson(mode) {
   lessonTitle.textContent = config.title;
   lessonDescription.textContent = config.description;
   lessonGrid.innerHTML = "";
+  lessonGrid.classList.toggle("is-rows", config.layout === "rows");
+  lessonGrid.classList.toggle("is-grid", config.layout !== "rows");
 
-  const fragment = document.createDocumentFragment();
-  config.items.forEach((item) => {
-    fragment.append(createCard(item));
-  });
+  if (config.layout === "rows") {
+    renderRows(config.items);
+    return;
+  }
 
-  lessonGrid.append(fragment);
+  renderGrid(config.items);
 }
 
 lettersButton.addEventListener("click", () => {

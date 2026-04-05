@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Letras e Sílabas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Nunito:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="/letras.js"></script>
+  </head>
+  <body>
+    <div class="lesson-shell">
+      <main class="lesson-page">
+        <header class="lesson-hero">
+          <nav class="top-nav" aria-label="Atividades">
+            <a class="nav-link" href="./index.html">Sílabas</a>
+            <a class="nav-link is-current" href="./letras.html">Letras e sílabas</a>
+          </nav>
+          <p class="eyebrow">Alfabetização infantil</p>
+          <h1>Letras e sílabas</h1>
+          <p class="lesson-copy">
+            Veja primeiro as letras maiúsculas e minúsculas. Depois, pratique sílabas em
+            maiúsculas e minúsculas.
+          </p>
+        </header>
+
+        <section class="lesson-controls">
+          <button id="letters-btn" class="lesson-btn is-active" type="button">
+            Letras
+          </button>
+          <button id="syllables-btn" class="lesson-btn" type="button">
+            Sílabas
+          </button>
+        </section>
+
+        <section class="lesson-panel">
+          <div class="lesson-panel-header">
+            <h2 id="lesson-title">Letras maiúsculas e minúsculas</h2>
+            <p id="lesson-description">Toque e observe cada par de letras.</p>
+          </div>
+          <div id="lesson-grid" class="lesson-grid" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

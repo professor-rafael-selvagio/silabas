@@ -32,13 +32,12 @@ textarea {
 
 .app-shell {
   min-height: 100vh;
-  display: grid;
-  place-items: center;
   padding: 24px;
 }
 
 .app-card {
-  width: min(100%, 980px);
+  width: 100%;
+  min-height: calc(100vh - 48px);
   background: var(--card);
   backdrop-filter: blur(12px);
   border: 2px solid var(--card-border);
@@ -47,6 +46,19 @@ textarea {
   padding: 28px;
   display: grid;
   gap: 24px;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.35fr);
+  grid-template-areas:
+    "hero output"
+    "controls output";
+  align-items: start;
+}
+
+.hero {
+  grid-area: hero;
+}
+
+.controls {
+  grid-area: controls;
 }
 
 .hero h1,
@@ -82,6 +94,13 @@ textarea {
   border-radius: 24px;
   padding: 20px;
   border: 1px solid rgba(23, 50, 77, 0.08);
+}
+
+.output-panel {
+  grid-area: output;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 .input-label {
@@ -163,7 +182,7 @@ textarea:focus {
 }
 
 .output {
-  min-height: 240px;
+  min-height: 100%;
   background:
     linear-gradient(135deg, rgba(255, 247, 214, 0.82), rgba(255, 255, 255, 0.92)),
     #fff;
@@ -203,12 +222,27 @@ textarea:focus {
   color: #7890a6;
 }
 
+@media (max-width: 980px) {
+  .app-card {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "hero"
+      "controls"
+      "output";
+  }
+
+  .output {
+    min-height: 280px;
+  }
+}
+
 @media (max-width: 720px) {
   .app-shell {
     padding: 14px;
   }
 
   .app-card {
+    min-height: calc(100vh - 28px);
     padding: 18px;
     border-radius: 24px;
   }

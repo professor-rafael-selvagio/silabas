@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sílabas Divertidas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Nunito:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="/main.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <main class="app-card">
+        <section class="hero">
+          <p class="eyebrow">Alfabetização infantil</p>
+          <h1>Sílabas Divertidas</h1>
+          <p class="hero-copy">
+            Digite uma frase e toque nas sílabas para ouvir cada pedaço da palavra.
+          </p>
+        </section>
+
+        <section class="controls">
+          <label class="input-label" for="sentence-input">Frase em português</label>
+          <div class="input-row">
+            <textarea
+              id="sentence-input"
+              rows="3"
+              maxlength="220"
+              placeholder="Exemplo: A bola é azul."
+            >A bola é azul.</textarea>
+          </div>
+          <div class="button-row">
+            <button id="process-btn" class="primary-btn" type="button">Separar sílabas</button>
+            <button id="speak-btn" class="icon-btn" type="button" aria-label="Ouvir frase completa">
+              <span aria-hidden="true">🔊</span>
+              <span>Ouvir frase</span>
+            </button>
+            <button id="fullscreen-btn" class="secondary-btn" type="button">
+              Tela cheia
+            </button>
+          </div>
+          <p id="status" class="status">Toque em "Separar sílabas" para atualizar a frase.</p>
+        </section>
+
+        <section class="output-panel">
+          <div class="panel-header">
+            <h2>Resultado</h2>
+            <p>Toque em qualquer sílaba para ouvir.</p>
+          </div>
+          <div id="output" class="output" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

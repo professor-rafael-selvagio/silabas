@@ -109,6 +109,47 @@ textarea {
   font-size: 1.05rem;
 }
 
+.difficulty-panel {
+  margin-bottom: 18px;
+}
+
+.difficulty-title {
+  margin: 0 0 10px;
+  color: #12527f;
+  font-size: 0.98rem;
+}
+
+.difficulty-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.difficulty-btn {
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 2px solid rgba(18, 82, 127, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+  color: #12527f;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(23, 50, 77, 0.06);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.difficulty-btn.is-active {
+  background: #12527f;
+  color: #fff;
+}
+
+.difficulty-btn:hover {
+  transform: translateY(-2px);
+}
+
 textarea {
   width: 100%;
   border: 2px solid rgba(18, 82, 127, 0.15);
@@ -131,6 +172,10 @@ textarea:focus {
   flex-wrap: wrap;
   gap: 12px;
   margin: 16px 0 10px;
+}
+
+.button-row-top {
+  margin: 0 0 14px;
 }
 
 .primary-btn,
@@ -163,6 +208,11 @@ textarea:focus {
 .secondary-btn {
   background: #12527f;
   color: #fff;
+}
+
+#random-short-btn,
+#random-long-btn {
+  background: #2f9e8f;
 }
 
 .icon-btn {
@@ -250,6 +300,10 @@ textarea:focus {
   .button-row > * {
     width: 100%;
     justify-content: center;
+  }
+
+  .difficulty-row > * {
+    width: 100%;
   }
 
   .output {

@@ -10,12 +10,90 @@ const syllableEngine = new Hypher({
 
 const input = document.querySelector("#sentence-input");
 const processButton = document.querySelector("#process-btn");
+const randomShortButton = document.querySelector("#random-short-btn");
+const randomLongButton = document.querySelector("#random-long-btn");
 const speakButton = document.querySelector("#speak-btn");
 const fullscreenButton = document.querySelector("#fullscreen-btn");
 const output = document.querySelector("#output");
 const status = document.querySelector("#status");
+const difficultyButtons = {
+  easy: document.querySelector("#difficulty-easy"),
+  medium: document.querySelector("#difficulty-medium"),
+  hard: document.querySelector("#difficulty-hard"),
+};
 
 const wordRegex = /[\p{L}\p{M}]+(?:['-][\p{L}\p{M}]+)*/gu;
+const sentenceBank = {
+  easy: {
+    short: [
+      "A bola rola.",
+      "O gato mia.",
+      "A fada voa.",
+      "O pato nada.",
+      "A vaca muge.",
+      "O sapo pula.",
+      "A lua brilha.",
+      "O sol aquece.",
+    ],
+    long: [
+      "A bola azul rola no chao.",
+      "O gato preto dorme no sofa.",
+      "A fada boa voa no ceu.",
+      "O pato nada no lago raso.",
+      "A vaca branca come no pasto.",
+      "O sapo verde pula na lama.",
+    ],
+  },
+  medium: {
+    short: [
+      "A menina canta feliz.",
+      "O coelho corre rapido.",
+      "A janela fica aberta.",
+      "O menino lava a mao.",
+      "A abelha pousa na flor.",
+      "O cavalo bebe agua.",
+    ],
+    long: [
+      "A menina canta baixinho perto da mamae.",
+      "O coelho branco corre no jardim de casa.",
+      "O menino lava a mao antes do lanche.",
+      "A abelha pequena pousa na flor amarela.",
+      "O cavalo castanho bebe agua no balde.",
+      "A janela da sala fica aberta de manha.",
+    ],
+  },
+  hard: {
+    short: [
+      "A professora contou uma historia.",
+      "O passarinho fez ninho na arvore.",
+      "A formiga carregou uma folha.",
+      "O bombeiro apagou o fogo.",
+      "A familia saiu para passear.",
+      "O pirata achou um mapa.",
+    ],
+    long: [
+      "A professora contou uma historia bonita para a turma.",
+      "O passarinho fez ninho na arvore do quintal.",
+      "A formiga carregou uma folha grande ate a toca.",
+      "O bombeiro apagou o fogo com muita coragem.",
+      "A familia saiu para passear no parque da cidade.",
+      "O pirata achou um mapa velho dentro do bau.",
+    ],
+  },
+};
+
+const difficultyNames = {
+  easy: "fácil",
+  medium: "média",
+  hard: "difícil",
+};
+
+let selectedDifficulty = "easy";
+let lastSentenceByGroup = {
+  easy: { short: "", long: "" },
+  medium: { short: "", long: "" },
+  hard: { short: "", long: "" },
+};
 
 function cancelSpeech() {
   window.speechSynthesis.cancel();
@@ -72,6 +150,35 @@ function tokenizeSentence(sentence) {
   }
 
   return tokens;
+}
+
+function updateDifficultyButtons() {
+  Object.entries(difficultyButtons).forEach(([difficulty, button]) => {
+    button.classList.toggle("is-active", difficulty === selectedDifficulty);
+  });
+}
+
+function setDifficulty(difficulty) {
+  selectedDifficulty = difficulty;
+  updateDifficultyButtons();
+  status.textContent = `Nível ${difficultyNames[difficulty]} selecionado. Escolha uma frase curta ou maior.`;
+}
+
+function pickRandomSentence(length) {
+  const options = sentenceBank[selectedDifficulty][length];
+
+  if (options.length === 1) {
+    return options[0];
+  }
+
+  let nextSentence = options[Math.floor(Math.random() * options.length)];
+
+  while (nextSentence === lastSentenceByGroup[selectedDifficulty][length]) {
+    nextSentence = options[Math.floor(Math.random() * options.length)];
+  }
+
+  lastSentenceByGroup[selectedDifficulty][length] = nextSentence;
+  return nextSentence;
 }
 
 function renderSentence() {
@@ -143,6 +250,25 @@ document.addEventListener("fullscreenchange", () => {
 });
 
 processButton.addEventListener("click", renderSentence);
+difficultyButtons.easy.addEventListener("click", () => {
+  setDifficulty("easy");
+});
+difficultyButtons.medium.addEventListener("click", () => {
+  setDifficulty("medium");
+});
+difficultyButtons.hard.addEventListener("click", () => {
+  setDifficulty("hard");
+});
+randomShortButton.addEventListener("click", () => {
+  input.value = pickRandomSentence("short");
+  renderSentence();
+  status.textContent = `Frase curta de nível ${difficultyNames[selectedDifficulty]} sorteada.`;
+});
+randomLongButton.addEventListener("click", () => {
+  input.value = pickRandomSentence("long");
+  renderSentence();
+  status.textContent = `Frase maior de nível ${difficultyNames[selectedDifficulty]} sorteada.`;
+});
 speakButton.addEventListener("click", () => {
   status.textContent = "Reproduzindo a frase completa.";
   speakText(input.value);
@@ -159,4 +285,5 @@ input.addEventListener("keydown", (event) => {
   }
 });
 
+updateDifficultyButtons();
 renderSentence();

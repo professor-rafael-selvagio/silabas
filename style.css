@@ -80,6 +80,62 @@ textarea {
   padding: 2px 2px 0;
 }
 
+.mode-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.mode-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #12527f;
+}
+
+.mode-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.mode-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mode-slider {
+  position: relative;
+  display: inline-flex;
+  width: 54px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(18, 82, 127, 0.2);
+  transition: background 160ms ease;
+}
+
+.mode-slider::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #12527f;
+  transition: transform 160ms ease;
+}
+
+.mode-toggle:checked + .mode-slider {
+  background: rgba(47, 158, 143, 0.25);
+}
+
+.mode-toggle:checked + .mode-slider::after {
+  transform: translateX(24px);
+}
+
 .controls {
   min-width: 0;
   display: grid;
@@ -574,6 +630,43 @@ textarea:focus {
   justify-content: space-between;
   margin-top: 8px;
   font-size: 0.76rem;
+}
+
+body[data-mode="child"] .preferences-panel,
+body[data-mode="child"] .study-note,
+body[data-mode="child"] .summary-strip,
+body[data-mode="child"] .panel-tip,
+body[data-mode="child"] .app-footer span:last-child {
+  display: none;
+}
+
+body[data-mode="child"] .hero-copy {
+  max-width: 20ch;
+  font-size: 1rem;
+}
+
+body[data-mode="child"] .controls {
+  gap: 12px;
+}
+
+body[data-mode="child"] .button-row > * {
+  min-height: 48px;
+  font-size: 0.96rem;
+}
+
+body[data-mode="child"] .output {
+  padding: 22px;
+  font-size: clamp(
+    calc(3.2rem * var(--output-font-scale)),
+    calc(6vw * var(--output-font-scale)),
+    calc(6.4rem * var(--output-font-scale))
+  );
+}
+
+body[data-mode="child"] .syllable {
+  min-width: 92px;
+  min-height: 92px;
+  border-radius: 22px;
 }
 
 @media (max-width: 980px) {

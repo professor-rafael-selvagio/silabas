@@ -21,6 +21,7 @@ const themeSelect = document.querySelector("#theme-select");
 const contrastToggle = document.querySelector("#contrast-toggle");
 const autoSpeakToggle = document.querySelector("#auto-speak-toggle");
 const colorToggle = document.querySelector("#color-toggle");
+const modeToggle = document.querySelector("#mode-toggle");
 const themeDescription = document.querySelector("#theme-description");
 const encouragement = document.querySelector("#encouragement");
 const summaryTheme = document.querySelector("#summary-theme");
@@ -53,6 +54,7 @@ const fontScaleValues = {
 let selectedDifficulty = "easy";
 let selectedTheme = "all";
 let selectedFontScale = "medium";
+let selectedMode = "full";
 let highContrastEnabled = false;
 let autoSpeakEnabled = false;
 let coloredSyllablesEnabled = true;
@@ -144,6 +146,9 @@ function loadPreferences() {
     if (preferences.fontScale && fontScaleValues[preferences.fontScale]) {
       selectedFontScale = preferences.fontScale;
     }
+    if (preferences.mode === "child" || preferences.mode === "full") {
+      selectedMode = preferences.mode;
+    }
     highContrastEnabled = Boolean(preferences.highContrastEnabled);
     autoSpeakEnabled = Boolean(preferences.autoSpeakEnabled);
     coloredSyllablesEnabled = Boolean(preferences.coloredSyllablesEnabled);
@@ -157,6 +162,7 @@ function savePreferences() {
     difficulty: selectedDifficulty,
     theme: selectedTheme,
     fontScale: selectedFontScale,
+    mode: selectedMode,
     highContrastEnabled,
     autoSpeakEnabled,
     coloredSyllablesEnabled,
@@ -167,6 +173,7 @@ function savePreferences() {
 
 function applyVisualPreferences() {
   document.body.dataset.contrast = highContrastEnabled ? "high" : "normal";
+  document.body.dataset.mode = selectedMode;
   document.documentElement.style.setProperty(
     "--output-font-scale",
     fontScaleValues[selectedFontScale],
@@ -182,6 +189,7 @@ function applyVisualPreferences() {
   autoSpeakToggle.setAttribute("aria-pressed", String(autoSpeakEnabled));
   colorToggle.classList.toggle("is-active", coloredSyllablesEnabled);
   colorToggle.setAttribute("aria-pressed", String(coloredSyllablesEnabled));
+  modeToggle.checked = selectedMode === "full";
   themeSelect.value = selectedTheme;
   summaryTheme.textContent = themeConfig[selectedTheme].label;
   themeDescription.textContent = themeConfig[selectedTheme].description;
@@ -413,6 +421,15 @@ colorToggle.addEventListener("click", () => {
   status.textContent = coloredSyllablesEnabled
     ? "Colorização das sílabas ativada."
     : "Colorização das sílabas desativada.";
+});
+
+modeToggle.addEventListener("change", () => {
+  selectedMode = modeToggle.checked ? "full" : "child";
+  applyVisualPreferences();
+  savePreferences();
+  status.textContent = selectedMode === "child"
+    ? "Modo criança ativado."
+    : "Modo completo ativado.";
 });
 
 Object.entries(fontButtons).forEach(([fontScale, button]) => {

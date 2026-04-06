@@ -5,6 +5,12 @@ const lessonTitle = document.querySelector("#lesson-title");
 const lessonDescription = document.querySelector("#lesson-description");
 const lettersButton = document.querySelector("#letters-btn");
 const syllablesButton = document.querySelector("#syllables-btn");
+const musicButtons = document.querySelectorAll("[data-song]");
+const musicModal = document.querySelector("#music-modal");
+const closeMusicModalButton = document.querySelector("#close-music-modal");
+const musicModalTitle = document.querySelector("#music-modal-title");
+const musicPlayer = document.querySelector("#music-player");
+const musicLyrics = document.querySelector("#music-lyrics");
 
 const letters = [
   "A", "B", "C", "D", "E", "F", "G",
@@ -49,6 +55,19 @@ const lessonConfig = {
     description: "Veja as sílabas organizadas em linhas por família.",
     items: syllableRows,
     layout: "rows",
+  },
+};
+
+const songCatalog = {
+  alfabeto: {
+    title: "Alfabeto",
+    audioUrl: new URL("./audio/alfabeto.mp3", import.meta.url),
+    lyricsUrl: new URL("./audio/alfabeto.txt", import.meta.url),
+  },
+  abelha: {
+    title: "Abelha",
+    audioUrl: new URL("./audio/abelha.mp3", import.meta.url),
+    lyricsUrl: new URL("./audio/abelha.txt", import.meta.url),
   },
 };
 
@@ -128,12 +147,67 @@ function setActiveLesson(mode) {
   renderGrid(config.items);
 }
 
+async function openSongModal(songKey) {
+  const song = songCatalog[songKey];
+  if (!song) {
+    return;
+  }
+
+  musicModalTitle.textContent = song.title;
+  musicPlayer.src = song.audioUrl.href;
+  musicPlayer.load();
+  musicLyrics.textContent = "Carregando letra...";
+  musicModal.hidden = false;
+  document.body.classList.add("is-modal-open");
+
+  try {
+    const response = await fetch(song.lyricsUrl.href);
+    if (!response.ok) {
+      throw new Error("Falha ao carregar a letra.");
+    }
+
+    musicLyrics.textContent = await response.text();
+  } catch {
+    musicLyrics.textContent = "Não foi possível carregar a letra desta música.";
+  }
+}
+
+function closeSongModal() {
+  musicModal.hidden = true;
+  musicPlayer.pause();
+  musicPlayer.currentTime = 0;
+  musicPlayer.removeAttribute("src");
+  musicPlayer.load();
+  document.body.classList.remove("is-modal-open");
+}
+
 lettersButton.addEventListener("click", () => {
   setActiveLesson("letters");
 });
 
 syllablesButton.addEventListener("click", () => {
   setActiveLesson("syllables");
+});
+
+musicButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    openSongModal(button.dataset.song);
+  });
+});
+
+closeMusicModalButton.addEventListener("click", closeSongModal);
+
+musicModal.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target instanceof HTMLElement && target.dataset.closeModal === "true") {
+    closeSongModal();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !musicModal.hidden) {
+    closeSongModal();
+  }
 });
 
 setActiveLesson("letters");

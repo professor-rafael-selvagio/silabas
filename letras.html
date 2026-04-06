@@ -38,6 +38,27 @@
           </button>
         </section>
 
+        <section class="music-panel" aria-label="Músicas de apoio">
+          <div class="music-panel-header">
+            <h2>Músicas</h2>
+            <p>Ouça, acompanhe a letra e use como apoio lúdico na alfabetização.</p>
+          </div>
+          <div class="music-actions">
+            <button class="music-btn" type="button" data-song="alfabeto">
+              <span aria-hidden="true">🎵</span>
+              <span>Alfabeto</span>
+            </button>
+            <button class="music-btn" type="button" data-song="abelha">
+              <span aria-hidden="true">🐝</span>
+              <span>Abelha</span>
+            </button>
+          </div>
+          <p class="music-note">
+            Músicas criadas com Suno AI. Você informou que não possui direitos comerciais sobre
+            essas faixas.
+          </p>
+        </section>
+
         <section class="lesson-panel">
           <div class="lesson-panel-header">
             <h2 id="lesson-title">Letras maiúsculas e minúsculas</h2>
@@ -46,8 +67,32 @@
           <div id="lesson-grid" class="lesson-grid" aria-live="polite"></div>
         </section>
 
+        <div id="music-modal" class="music-modal" hidden>
+          <div class="music-modal-backdrop" data-close-modal="true"></div>
+          <section class="music-modal-card" role="dialog" aria-modal="true" aria-labelledby="music-modal-title">
+            <div class="music-modal-header">
+              <div>
+                <p class="music-modal-eyebrow">Faixa educativa</p>
+                <h2 id="music-modal-title">Música</h2>
+              </div>
+              <button id="close-music-modal" class="close-modal-btn" type="button" aria-label="Fechar modal">
+                ✕
+              </button>
+            </div>
+            <audio id="music-player" class="music-player" controls></audio>
+            <div class="music-lyrics-block">
+              <h3>Letra</h3>
+              <pre id="music-lyrics" class="music-lyrics"></pre>
+            </div>
+            <p class="music-modal-note">
+              Aviso: as músicas foram criadas com Suno AI e não possuem liberação de direitos
+              comerciais informada pelo autor deste projeto.
+            </p>
+          </section>
+        </div>
+
         <footer class="lesson-footer">
-          <span>Versão atual da interface: 1.6.2</span>
+          <span>Versão atual da interface: 1.6.3</span>
           <span>Conteúdo visual para apoio à alfabetização.</span>
         </footer>
       </main>

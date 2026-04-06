@@ -1,320 +1,274 @@
-export const sentenceBank = {
-  easy: {
-    short: [
-      "A bola rola.",
-      "O gato mia.",
-      "A fada voa.",
-      "O pato nada.",
-      "A vaca muge.",
-      "O sapo pula.",
-      "A lua brilha.",
-      "O sol aquece.",
-      "A mala abre.",
-      "O bebe ri.",
-      "A pipa sobe.",
-      "O dado caiu.",
-      "A mesa gira.",
-      "O lobo uiva.",
-      "A mosca voa.",
-      "O sino toca.",
-      "A roda gira.",
-      "O peixe nada.",
-      "A folha cai.",
-      "O galo canta.",
-      "A neve some.",
-      "O vento sopra.",
-      "A abelha zumbe.",
-      "O rato corre.",
-      "A nuvem passa.",
-      "O barco boia.",
-      "A vovó fala.",
-      "O menino sorri.",
-      "A menina pula.",
-      "O trem apita.",
-      "A cama chama.",
-      "O gelo derrete.",
-      "A gota pinga.",
-      "O porco grunhe.",
-      "A planta cresce.",
-      "O circo chegou.",
-      "A blusa seca.",
-      "O bolo cresce.",
-      "A canoa anda.",
-      "O fogo esquenta.",
-      "A raposa corre.",
-      "O polvo nada.",
-      "A boneca caiu.",
-      "O leao ruge.",
-      "A janela abre.",
-      "O balao sobe.",
-      "A areia brilha.",
-      "O coelho salta.",
-      "A estrela pisca.",
-      "O cabrito berra.",
-    ],
-    long: [
-      "A bola azul rola no chao.",
-      "O gato preto dorme no sofa.",
-      "A fada boa voa no ceu.",
-      "O pato nada no lago raso.",
-      "A vaca branca come no pasto.",
-      "O sapo verde pula na lama.",
-      "A pipa vermelha sobe no vento.",
-      "O bebe pequeno bate palma feliz.",
-      "A lua clara brilha sobre o mar.",
-      "O sol forte aquece toda a areia.",
-      "A mesa redonda fica perto da porta.",
-      "O rato cinza corre atras do queijo.",
-      "A abelha amarela pousa na flor.",
-      "O peixe dourado nada no aquario.",
-      "A menina alegre gira com a saia.",
-      "O menino esperto monta no cavalo.",
-      "A roda grande gira na ladeira.",
-      "O barco branco boia perto da ponte.",
-      "A folha seca cai no jardim.",
-      "O galo alto canta no terreiro cedo.",
-      "A estrela clara aparece no ceu escuro.",
-      "O trem longo apita perto da estacao.",
-      "A boneca nova dorme na cama rosa.",
-      "O leao forte ruge atras da pedra.",
-      "A canoa leve passa no rio calmo.",
-      "O bolo fofo cresce dentro do forno.",
-      "A planta verde cresce com agua limpa.",
-      "O fogo quente esquenta a panela.",
-      "A areia fina brilha na praia limpa.",
-      "O coelho branco salta no quintal.",
-      "A janela aberta deixa o vento entrar.",
-      "O balao colorido sobe bem devagar.",
-      "A nuvem branca cobre parte do sol.",
-      "O cabrito pequeno berra no curral.",
-      "A raposa ligeira corre pelo mato.",
-      "O polvo macio nada no mar fundo.",
-      "A blusa azul seca no varal.",
-      "O gelo frio derrete no copo.",
-      "A gota clara pinga sobre a folha.",
-      "O sino da igreja toca de manha.",
-      "A mala grande fica perto da cama.",
-      "O dado vermelho caiu sob a mesa.",
-      "A mosca pequena voa pela sala.",
-      "O lobo cinza uiva perto do monte.",
-      "A vovo conta historia antes do sono.",
-      "O porco gordo corre no chiqueiro.",
-      "A neve fria some com o sol.",
-      "O vento leve sopra na varanda.",
-      "A roda do carro gira na rua.",
-      "O circo alegre chegou na cidade.",
-    ],
+export const themeConfig = {
+  all: {
+    label: "Todos os temas",
+    description: "Use qualquer tema para praticar frases variadas.",
   },
-  medium: {
-    short: [
-      "A menina canta feliz.",
-      "O coelho corre rapido.",
-      "A janela fica aberta.",
-      "O menino lava a mao.",
-      "A abelha pousa na flor.",
-      "O cavalo bebe agua.",
-      "A familia janta cedo.",
-      "O cachorro abana o rabo.",
-      "A escola abriu cedo.",
-      "O palhaco contou piada.",
-      "A arara gritou alto.",
-      "O caderno caiu no chao.",
-      "A professora sorriu contente.",
-      "O jardineiro cortou a grama.",
-      "A borboleta mudou de flor.",
-      "O carteiro chegou agora.",
-      "A cozinheira mexeu a sopa.",
-      "O pintinho seguiu a galinha.",
-      "A campainha tocou duas vezes.",
-      "O aluno guardou o livro.",
-      "A formiga entrou na toca.",
-      "O macaco subiu depressa.",
-      "A cadeira ficou torta.",
-      "O padeiro vendeu pao.",
-      "A lanterna iluminou tudo.",
-      "O bombeiro fechou a mangueira.",
-      "A tesoura cortou papel.",
-      "O piloto olhou a pista.",
-      "A artista pintou flores.",
-      "O zelador abriu o portao.",
-      "A mochila ficou pesada.",
-      "O sapateiro limpou o sapato.",
-      "A costureira mediu o pano.",
-      "O peixinho sumiu da pedra.",
-      "A historia ficou engraçada.",
-      "O menino chutou a bola.",
-      "A menina penteou o cabelo.",
-      "O cachorro latiu na rua.",
-      "A torneira pingou a noite.",
-      "O feirante vendeu banana.",
-      "A baba ninou o bebe.",
-      "O artista tocou violao.",
-      "A joaninha abriu as asas.",
-      "O trator puxou o carro.",
-      "A sereia cantou baixinho.",
-      "O passarinho bebeu agua.",
-      "A pipoca estourou depressa.",
-      "O relogio marcou sete.",
-      "A menina leu em voz alta.",
-      "O foguete cortou o ceu.",
-    ],
-    long: [
-      "A menina canta baixinho perto da mamae.",
-      "O coelho branco corre no jardim de casa.",
-      "O menino lava a mao antes do lanche.",
-      "A abelha pequena pousa na flor amarela.",
-      "O cavalo castanho bebe agua no balde.",
-      "A janela da sala fica aberta de manha.",
-      "A familia janta reunida depois da brincadeira.",
-      "O cachorro alegre abana o rabo no quintal.",
-      "A professora sorriu quando a turma terminou.",
-      "O jardineiro cortou a grama perto do muro.",
-      "A borboleta colorida mudou de flor no jardim.",
-      "O carteiro chegou cedo com cartas e revistas.",
-      "A cozinheira mexeu a sopa com cuidado.",
-      "O pintinho amarelo seguiu a galinha pela fazenda.",
-      "A campainha tocou duas vezes na entrada.",
-      "O aluno guardou o livro dentro da mochila.",
-      "A formiga pequena entrou na toca depressa.",
-      "O macaco esperto subiu rapido na arvore.",
-      "A cadeira de madeira ficou torta ontem.",
-      "O padeiro vendeu pao quente logo cedo.",
-      "A lanterna forte iluminou todo o corredor.",
-      "O bombeiro fechou a mangueira depois da agua.",
-      "A tesoura nova cortou o papel colorido.",
-      "O piloto atento olhou a pista molhada.",
-      "A artista pintou flores grandes na parede.",
-      "O zelador abriu o portao antes da aula.",
-      "A mochila azul ficou pesada com os cadernos.",
-      "O sapateiro limpou o sapato com escova.",
-      "A costureira mediu o pano sobre a mesa.",
-      "O peixinho laranja sumiu atras da pedra.",
-      "A historia engraçada fez todos rirem juntos.",
-      "O menino chutou a bola para o gol.",
-      "A menina penteou o cabelo antes da festa.",
-      "O cachorro latiu quando ouviu passos no patio.",
-      "A torneira pingou a noite toda na cozinha.",
-      "O feirante vendeu banana madura na esquina.",
-      "A baba ninou o bebe no quarto claro.",
-      "O artista tocou violao durante a apresentacao.",
-      "A joaninha abriu as asas sobre a folha.",
-      "O trator puxou o carro preso na lama.",
-      "A sereia cantou baixinho perto das pedras.",
-      "O passarinho bebeu agua da fonte pequena.",
-      "A pipoca estourou depressa dentro da panela.",
-      "O relogio marcou sete horas em ponto.",
-      "A menina leu a historia em voz alta.",
-      "O foguete cortou o ceu escuro da noite.",
-      "A arara gritou alto no galho mais alto.",
-      "O caderno caiu no chao da sala.",
-      "A escola abriu cedo para a reuniao.",
-      "O palhaco contou piada no meio do show.",
-    ],
+  animals: {
+    label: "Animais",
+    description: "Frases com bichos ajudam a identificar palavras concretas e divertidas.",
   },
-  hard: {
-    short: [
-      "A professora contou uma historia.",
-      "O passarinho fez ninho na arvore.",
-      "A formiga carregou uma folha.",
-      "O bombeiro apagou o fogo.",
-      "A familia saiu para passear.",
-      "O pirata achou um mapa.",
-      "A astronauta olhou pela janela.",
-      "O cientista misturou liquidos coloridos.",
-      "A diretora chamou a turma.",
-      "O violinista afinou o instrumento.",
-      "A cozinheira preparou um banquete.",
-      "O fazendeiro consertou a cerca.",
-      "A bibliotecaria organizou os livros.",
-      "O marinheiro avistou uma ilha.",
-      "A costureira terminou o vestido.",
-      "O explorador atravessou a floresta.",
-      "A enfermeira cuidou do paciente.",
-      "O motorista seguiu outro caminho.",
-      "A escritora imaginou novos personagens.",
-      "O jardineiro podou as roseiras.",
-      "A pianista ensaiou por horas.",
-      "O fotografo registrou a paisagem.",
-      "A bailarina girou no palco.",
-      "O pedreiro levantou a parede.",
-      "A meteorologista observou as nuvens.",
-      "O arqueologo limpou a estatua.",
-      "A engenheira revisou o projeto.",
-      "O pescador remendou a rede.",
-      "A artesa pintou os vasos.",
-      "O mensageiro entregou o pacote.",
-      "A veterinaria examinou o filhote.",
-      "O locutor anunciou o resultado.",
-      "A aldeia celebrou a colheita.",
-      "O escultor moldou a argila.",
-      "A atriz decorou o roteiro.",
-      "O estudante resolveu o problema.",
-      "A ceramista aqueceu o forno.",
-      "O repórter entrevistou o atleta.",
-      "A musicista criou uma melodia.",
-      "O capitão orientou a tripulacao.",
-      "A pesquisadora analisou os dados.",
-      "O padeiro recheou os sonhos.",
-      "A costureira alinhavou a barra.",
-      "O nadador treinou pela manha.",
-      "A rainha visitou o castelo.",
-      "O garoto encontrou um enigma.",
-      "A garota escreveu um poema.",
-      "O foguista alimentou a caldeira.",
-      "A turma montou um teatro.",
-      "O professor explicou com paciencia.",
-    ],
-    long: [
-      "A professora contou uma historia bonita para a turma.",
-      "O passarinho fez ninho na arvore do quintal.",
-      "A formiga carregou uma folha grande ate a toca.",
-      "O bombeiro apagou o fogo com muita coragem.",
-      "A familia saiu para passear no parque da cidade.",
-      "O pirata achou um mapa velho dentro do bau.",
-      "A astronauta olhou pela janela da nave silenciosa.",
-      "O cientista misturou liquidos coloridos no laboratorio.",
-      "A diretora chamou a turma para uma conversa.",
-      "O violinista afinou o instrumento antes do concerto.",
-      "A cozinheira preparou um banquete para os convidados.",
-      "O fazendeiro consertou a cerca perto do celeiro.",
-      "A bibliotecaria organizou os livros por assunto.",
-      "O marinheiro avistou uma ilha depois da tempestade.",
-      "A costureira terminou o vestido com muito capricho.",
-      "O explorador atravessou a floresta com uma bussola.",
-      "A enfermeira cuidou do paciente com delicadeza.",
-      "O motorista seguiu outro caminho por causa da chuva.",
-      "A escritora imaginou novos personagens para a aventura.",
-      "O jardineiro podou as roseiras no fim da tarde.",
-      "A pianista ensaiou por horas para o recital.",
-      "O fotografo registrou a paisagem no alto da serra.",
-      "A bailarina girou no palco durante a apresentacao.",
-      "O pedreiro levantou a parede com muito cuidado.",
-      "A meteorologista observou as nuvens antes da chuva.",
-      "O arqueologo limpou a estatua encontrada nas ruinas.",
-      "A engenheira revisou o projeto com toda a equipe.",
-      "O pescador remendou a rede antes de sair.",
-      "A artesa pintou os vasos com desenhos delicados.",
-      "O mensageiro entregou o pacote no fim da tarde.",
-      "A veterinaria examinou o filhote com atencao.",
-      "O locutor anunciou o resultado para todo o estadio.",
-      "A aldeia celebrou a colheita com musica e danca.",
-      "O escultor moldou a argila ate formar um rosto.",
-      "A atriz decorou o roteiro para a estreia.",
-      "O estudante resolveu o problema usando outra estrategia.",
-      "A ceramista aqueceu o forno antes da queima.",
-      "O reporter entrevistou o atleta depois da prova.",
-      "A musicista criou uma melodia suave no piano.",
-      "O capitao orientou a tripulacao durante a viagem.",
-      "A pesquisadora analisou os dados com paciencia.",
-      "O padeiro recheou os sonhos com creme doce.",
-      "A costureira alinhavou a barra antes de costurar.",
-      "O nadador treinou pela manha antes do campeonato.",
-      "A rainha visitou o castelo antigo da montanha.",
-      "O garoto encontrou um enigma dentro do livro.",
-      "A garota escreveu um poema sobre o mar.",
-      "O foguista alimentou a caldeira com muito cuidado.",
-      "A turma montou um teatro para a feira.",
-      "O professor explicou a conta com muita paciencia.",
-    ],
+  home: {
+    label: "Casa e rotina",
+    description: "Frases do dia a dia aproximam a leitura da rotina da criança.",
+  },
+  school: {
+    label: "Escola e leitura",
+    description: "Temas escolares reforçam leitura, escuta e vocabulário de sala de aula.",
+  },
+  nature: {
+    label: "Natureza",
+    description: "Frases com ceu, vento, plantas e paisagens reforcam observacao e linguagem.",
+  },
+  fantasy: {
+    label: "Fantasia e aventura",
+    description: "Frases imaginativas ampliam repertorio e mantem a atividade mais envolvente.",
   },
 };
+
+const themeOrder = ["animals", "home", "school", "nature", "fantasy"];
+const difficulties = ["easy", "medium", "hard"];
+const lengths = ["short", "long"];
+
+function pick(list, index, step = 1, offset = 0) {
+  return list[(index * step + offset) % list.length];
+}
+
+function createSentenceSet(count, builder) {
+  const sentences = [];
+  for (let index = 0; index < count; index += 1) {
+    sentences.push(builder(index));
+  }
+  return sentences;
+}
+
+function getIndexParts(index) {
+  return {
+    unit: index % 10,
+    group: Math.floor(index / 10),
+    shiftA: (index * 3 + 1) % 10,
+    shiftB: (index * 7 + 2) % 10,
+    shiftC: (index * 9 + 3) % 10,
+  };
+}
+
+const banks = {
+  animals: {
+    easy: {
+      characters: ["o gato", "o pato", "a vaca", "o sapo", "o coelho", "o peixe", "a arara", "o galo", "a raposa", "o cabrito"],
+      actions: ["pula", "canta", "nada", "corre", "salta", "gira", "brinca", "mexe", "anda", "olha"],
+      places: ["no lago", "no quintal", "na grama", "na areia", "na ponte", "no pasto", "na cerca", "na sombra", "na trilha", "na fazenda"],
+      details: ["bem cedo", "com calma", "sem parar", "la fora", "com alegria", "todo dia", "devagar", "na manha", "ao sol", "feliz"],
+      objects: ["a bola", "a pena", "a flor", "a folha", "a lama", "a agua", "a pedra", "a cesta", "a fita", "a nuvem"],
+    },
+    medium: {
+      characters: ["o cachorro", "a borboleta", "o cavalo", "o pintinho", "o macaco", "o passarinho", "a joaninha", "o porco", "o leao", "o lobo"],
+      actions: ["observa", "acompanha", "carrega", "encontra", "escuta", "procura", "segue", "empurra", "descobre", "alcança"],
+      places: ["no jardim", "no curral", "na varanda", "perto do rio", "atras da pedra", "ao lado da cerca", "no pomar", "na trilha do parque", "na beira do lago", "debaixo da arvore"],
+      details: ["de manha", "com cuidado", "sem pressa", "durante a brincadeira", "antes do lanche", "com a turma", "na volta para casa", "depois da chuva", "com curiosidade", "bem contente"],
+      objects: ["uma folha grande", "a tigela azul", "um cesto pequeno", "a pena dourada", "a fruta madura", "a fita vermelha", "o pote de racao", "a sombra fresca", "o banco de madeira", "a trilha molhada"],
+    },
+    hard: {
+      characters: ["a veterinaria", "o explorador", "a pesquisadora", "o fotografo", "a biologa", "o treinador", "a guarda florestal", "o marinheiro", "a cuidadora", "o observador"],
+      animals: ["o filhote", "a tartaruga", "o passaro", "a raposa", "o cavalo", "o macaco", "a coruja", "o golfinho", "o peixe", "a borboleta"],
+      actions: ["acompanhou", "registrou", "protegeu", "examinou", "guiou", "observou", "resgatou", "alimentou", "estudou", "seguiu"],
+      places: ["na reserva", "no zoologico", "na praia", "na floresta", "no campo", "na ilha", "no aquario", "na montanha", "no parque", "na fazenda"],
+      details: ["com muita atencao", "durante a visita", "depois da chuva", "antes do amanhecer", "ao longo da trilha", "com paciencia", "durante a pesquisa", "em silencio", "com a equipe", "naquele instante"],
+      objects: ["os rastros na areia", "o mapa da trilha", "a caixa de cuidados", "o caderno de campo", "a lente da camera", "a rede de protecao", "a agua do tanque", "o abrigo de madeira", "a coleira colorida", "o ninho escondido"],
+    },
+  },
+  home: {
+    easy: {
+      characters: ["a mamae", "o papai", "a vovo", "o bebe", "a menina", "o menino", "a tia", "o irmao", "a familia", "o avo"],
+      actions: ["abre", "guarda", "limpa", "mexe", "puxa", "fecha", "seca", "leva", "olha", "arruma"],
+      places: ["na sala", "na cozinha", "no quarto", "na mesa", "na janela", "na porta", "no quintal", "no sofa", "na cama", "no varal"],
+      details: ["cedo", "agora", "com calma", "todo dia", "bem feliz", "de manha", "de tarde", "sem parar", "la dentro", "com cuidado"],
+      objects: ["a mala", "a blusa", "o copo", "a panela", "a toalha", "a boneca", "a mochila", "a cadeira", "a colher", "a almofada"],
+    },
+    medium: {
+      characters: ["a cozinheira", "o zelador", "a costureira", "o feirante", "a baba", "o padeiro", "a familia", "a cuidadora", "o morador", "a vizinha"],
+      actions: ["organizou", "preparou", "separou", "pendurou", "lavou", "guardou", "ajustou", "esquentou", "arrastou", "empilhou"],
+      places: ["na cozinha", "no corredor", "na lavanderia", "na sala", "no quarto", "perto da pia", "ao lado do fogao", "junto da estante", "na varanda", "no armario"],
+      details: ["depois do cafe", "antes da visita", "com cuidado", "sem demora", "bem cedo", "durante a limpeza", "na volta da feira", "com ajuda da turma", "antes do jantar", "ao fim da tarde"],
+      objects: ["os pratos coloridos", "a cesta de frutas", "a toalha dobrada", "os cadernos da mesa", "a caixa de brinquedos", "as panelas novas", "o pano limpo", "a jarra de suco", "a pilha de roupas", "o vaso pequeno"],
+    },
+    hard: {
+      characters: ["a arquiteta", "o cozinheiro", "a organizadora", "o morador", "a decoradora", "o eletricista", "a costureira", "o cuidador", "a administradora", "o restaurador"],
+      actions: ["reorganizou", "planejou", "consertou", "avaliou", "separou", "instalou", "revisou", "ajustou", "decorou", "catalogou"],
+      places: ["na cozinha da casa", "no quarto principal", "na area de servico", "na sala de jantar", "na oficina do fundo", "na varanda coberta", "no corredor interno", "na despensa", "no atelie da casa", "na entrada do predio"],
+      details: ["com bastante cuidado", "antes da reuniao", "durante a reforma", "ao longo da manha", "para receber visitas", "depois da entrega", "com a lista em maos", "seguindo o plano", "sem interromper a rotina", "naquele mesmo dia"],
+      objects: ["os moveis antigos", "a caixa de ferramentas", "as loucas delicadas", "o conjunto de cortinas", "a bancada de madeira", "o armario restaurado", "os tecidos coloridos", "a iluminacao da sala", "o inventario da despensa", "a colecao de almofadas"],
+    },
+  },
+  school: {
+    easy: {
+      characters: ["a professora", "o aluno", "a turma", "o menino", "a menina", "a escola", "o colega", "a tia", "o leitor", "a classe"],
+      actions: ["le", "canta", "fala", "olha", "pinta", "guarda", "copia", "escuta", "conta", "mostra"],
+      places: ["na escola", "na sala", "na mesa", "no quadro", "na fila", "na estante", "no patio", "no canto", "na aula", "na roda"],
+      details: ["bem alto", "com calma", "todo dia", "de manha", "feliz", "sem medo", "agora", "com a turma", "de novo", "devagar"],
+      objects: ["o livro", "o caderno", "a historia", "a letra", "a caneta", "a folha", "a tinta", "a mochila", "a licao", "a musica"],
+    },
+    medium: {
+      characters: ["a diretora", "o aluno", "a professora", "a bibliotecaria", "o grupo", "a turma", "o colega", "a leitora", "o monitor", "a estudante"],
+      actions: ["organizou", "compartilhou", "apresentou", "explicou", "revisou", "anotou", "leu", "pesquisou", "montou", "escreveu"],
+      places: ["na biblioteca", "na sala de aula", "no corredor da escola", "na roda de leitura", "perto do mural", "na feira do livro", "na mesa da turma", "na aula de artes", "na sala de apoio", "no laboratorio"],
+      details: ["com a turma", "antes do recreio", "com muita atencao", "durante a leitura", "no fim da aula", "depois da explicacao", "na hora da atividade", "com ajuda da professora", "em voz alta", "com os colegas"],
+      objects: ["o caderno ilustrado", "a lista de palavras", "o cartaz da feira", "a historia favorita", "o livro novo", "o texto do mural", "a pesquisa da turma", "o painel colorido", "o jogo de letras", "a pilha de livros"],
+    },
+    hard: {
+      characters: ["a coordenadora", "o professor", "a pesquisadora", "o estudante", "a bibliotecaria", "o orientador", "a diretora", "o palestrante", "a revisora", "o monitor"],
+      actions: ["avaliou", "planejou", "apresentou", "orientou", "catalogou", "organizou", "explicou", "corrigiu", "desenvolveu", "registrou"],
+      places: ["na biblioteca escolar", "no laboratorio de leitura", "na reuniao pedagogica", "na sala de projetos", "no auditório da escola", "na feira literaria", "na sala dos professores", "na oficina de escrita", "na mostra cultural", "no centro de estudos"],
+      details: ["com a equipe", "ao longo do semestre", "durante a apresentacao", "com bastante clareza", "seguindo o cronograma", "antes da avaliacao", "para toda a turma", "durante a pesquisa", "com exemplos praticos", "naquela etapa"],
+      objects: ["o plano de leitura", "a sequencia didatica", "o relatorio do projeto", "a colecao de livros", "o roteiro da oficina", "a proposta da feira", "o material de apoio", "a analise dos textos", "o cronograma da turma", "a revisao final"],
+    },
+  },
+  nature: {
+    easy: {
+      characters: ["o vento", "a lua", "o sol", "a nuvem", "a estrela", "a folha", "a areia", "o rio", "a chuva", "a flor"],
+      actions: ["brilha", "passa", "cai", "dança", "gira", "corre", "molha", "sobe", "desce", "aparece"],
+      places: ["no ceu", "na praia", "no jardim", "na serra", "no lago", "no campo", "na trilha", "na janela", "na ponte", "no quintal"],
+      details: ["de manha", "a noite", "bem cedo", "com calma", "sem parar", "devagar", "ao sol", "com brilho", "la longe", "no verao"],
+      objects: ["a pedra", "a planta", "a agua", "a terra", "a sombra", "a semente", "a brisa", "a areia", "o galho", "a nuvem"],
+    },
+    medium: {
+      characters: ["a montanha", "o rio", "a floresta", "a chuva", "o vento", "a nascente", "o jardim", "a trilha", "a cachoeira", "o lago"],
+      actions: ["protegeu", "cobriu", "alimentou", "refrescou", "iluminou", "rodeou", "encheu", "espalhou", "molhou", "acolheu"],
+      places: ["o vale inteiro", "a trilha do parque", "as pedras do rio", "o jardim da escola", "a margem do lago", "a mata fechada", "a ponte pequena", "o caminho da serra", "a beira da estrada", "a horta da casa"],
+      details: ["depois da chuva", "bem cedo", "ao cair da tarde", "com vento leve", "durante a caminhada", "em silencio", "com muita beleza", "naquela manha", "antes do sol forte", "com frescor"],
+      objects: ["as folhas secas", "a terra molhada", "a agua clara", "as flores novas", "o ar fresco", "a trilha limpa", "o reflexo do ceu", "as sementes pequenas", "a sombra das arvores", "as pedras redondas"],
+    },
+    hard: {
+      characters: ["a meteorologista", "o geologo", "a pesquisadora", "o explorador", "a fotografa", "o guia ambiental", "a biologa", "o observador", "a cientista", "o documentarista"],
+      actions: ["analisou", "mapeou", "registrou", "observou", "comparou", "acompanhou", "descreveu", "monitorou", "investigou", "documentou"],
+      places: ["a serra ao amanhecer", "o leito do rio", "a area de preservacao", "a floresta de altitude", "o vale rochoso", "a faixa de dunas", "a borda da cachoeira", "a nascente protegida", "o campo aberto", "a trilha da montanha"],
+      details: ["com instrumentos precisos", "durante a expedicao", "ao longo do estudo", "antes da tempestade", "com a equipe de campo", "em diferentes horarios", "durante a observacao", "com extremo cuidado", "na etapa final", "com registros detalhados"],
+      objects: ["as formacoes de pedra", "a qualidade da agua", "o movimento das nuvens", "a umidade do solo", "a vegetacao local", "os sinais do vento", "as mudancas do relevo", "o brilho do ceu", "a temperatura do ar", "os rastros da chuva"],
+    },
+  },
+  fantasy: {
+    easy: {
+      characters: ["a fada", "o pirata", "a sereia", "o foguete", "a rainha", "o castelo", "o mapa", "a nave", "o tesouro", "o dragao"],
+      actions: ["brilha", "voa", "canta", "sobe", "gira", "corre", "some", "apita", "aparece", "dança"],
+      places: ["no ceu", "no mar", "na torre", "na ilha", "na ponte", "na nuvem", "no castelo", "na floresta", "no navio", "na aventura"],
+      details: ["de noite", "bem cedo", "com magia", "sem parar", "com alegria", "na festa", "devagar", "la longe", "com luz", "na historia"],
+      objects: ["a estrela", "a coroa", "a chave", "a espada", "a lua", "a bandeira", "a capa", "a pedra", "a carta", "a trilha"],
+    },
+    medium: {
+      characters: ["a astronauta", "o cientista", "a heroina", "o pirata", "a feiticeira", "o inventor", "a navegante", "o guardiao", "a princesa", "o explorador"],
+      actions: ["descobriu", "encontrou", "montou", "guardou", "ativou", "observou", "seguiu", "abriu", "desenhou", "revelou"],
+      places: ["na ilha secreta", "na nave brilhante", "no castelo antigo", "na floresta magica", "no navio veloz", "na torre dourada", "na caverna escondida", "na ponte de cristal", "no planeta azul", "na cidade encantada"],
+      details: ["durante a aventura", "com muito cuidado", "antes do amanhecer", "com a ajuda do mapa", "na busca pelo tesouro", "depois da pista secreta", "em silencio", "com coragem", "na hora da fuga", "perto da entrada"],
+      objects: ["o mapa dobrado", "a chave dourada", "o cristal brilhante", "a coroa perdida", "o livro secreto", "a caixa misteriosa", "o codigo escondido", "a lanterna azul", "a mensagem antiga", "a joia rara"],
+    },
+    hard: {
+      characters: ["a comandante", "o alquimista", "a exploradora", "o capitao", "a inventora", "o guardiao", "a estrategista", "o cronista", "a maga", "o viajante"],
+      actions: ["decifrou", "coordenou", "investigou", "atravessou", "protegeu", "interpretou", "planejou", "registrou", "acionou", "recuperou"],
+      places: ["a fortaleza suspensa", "o laboratorio secreto", "a rota interplanetaria", "o portal escondido", "a biblioteca encantada", "a ilha de cristal", "o observatorio antigo", "a nave principal", "o reino submerso", "a passagem subterranea"],
+      details: ["durante a missao", "com extrema precisao", "antes do confronto final", "seguindo o antigo mapa", "ao lado da equipe", "com base nos sinais", "durante a jornada", "na etapa decisiva", "sem revelar o plano", "com toda a coragem"],
+      objects: ["o artefato perdido", "a mensagem codificada", "o mecanismo central", "a chave do portal", "o diario antigo", "a orbita da nave", "o cristal da coroa", "o mapa do reino", "a formula secreta", "o selo dourado"],
+    },
+  },
+};
+
+function buildEasyShort(theme) {
+  const bank = banks[theme].easy;
+  return createSentenceSet(50, (index) => {
+    const parts = getIndexParts(index);
+    const character = pick(bank.characters, parts.unit);
+    const action = pick(bank.actions, parts.shiftA);
+    const place = pick(bank.places, parts.shiftB);
+    const detail = pick(bank.details, parts.group);
+    return `${character} ${action} ${place} ${detail}.`;
+  });
+}
+
+function buildEasyLong(theme) {
+  const bank = banks[theme].easy;
+  return createSentenceSet(50, (index) => {
+    const parts = getIndexParts(index);
+    const character = pick(bank.characters, parts.unit);
+    const action = pick(bank.actions, parts.shiftA);
+    const object = pick(bank.objects, parts.shiftB);
+    const place = pick(bank.places, parts.shiftC);
+    const detail = pick(bank.details, parts.group);
+    return `${character} ${action} com ${object} ${place} ${detail}.`;
+  });
+}
+
+function buildMediumShort(theme) {
+  const bank = banks[theme].medium;
+  return createSentenceSet(50, (index) => {
+    const parts = getIndexParts(index);
+    const character = pick(bank.characters, parts.unit);
+    const action = pick(bank.actions, parts.shiftA);
+    const object = pick(bank.objects, parts.shiftB);
+    const detail = pick(bank.details, parts.group);
+    return `${character} ${action} ${object} ${detail}.`;
+  });
+}
+
+function buildMediumLong(theme) {
+  const bank = banks[theme].medium;
+  return createSentenceSet(50, (index) => {
+    const parts = getIndexParts(index);
+    const character = pick(bank.characters, parts.unit);
+    const action = pick(bank.actions, parts.shiftA);
+    const object = pick(bank.objects, parts.shiftB);
+    const place = pick(bank.places, parts.shiftC);
+    const detail = pick(bank.details, parts.group);
+    return `${character} ${action} ${object} ${place} ${detail}.`;
+  });
+}
+
+function buildHardShort(theme) {
+  const bank = banks[theme].hard;
+  return createSentenceSet(50, (index) => {
+    const parts = getIndexParts(index);
+    const character = pick(bank.characters, parts.unit);
+    const action = pick(bank.actions, parts.shiftA);
+    const object = pick(bank.objects, parts.shiftB);
+    const detail = pick(bank.details, parts.group);
+    return `${character} ${action} ${object} ${detail}.`;
+  });
+}
+
+function buildHardLong(theme) {
+  const bank = banks[theme].hard;
+  return createSentenceSet(50, (index) => {
+    const parts = getIndexParts(index);
+    const character = pick(bank.characters, parts.unit);
+    const action = pick(bank.actions, parts.shiftA);
+    const object = pick(bank.objects, parts.shiftB);
+    const place = pick(bank.places, parts.shiftC);
+    const detail = pick(bank.details, parts.group);
+    return `${character} ${action} ${object} em ${place} ${detail}.`;
+  });
+}
+
+const builders = {
+  easy: {
+    short: buildEasyShort,
+    long: buildEasyLong,
+  },
+  medium: {
+    short: buildMediumShort,
+    long: buildMediumLong,
+  },
+  hard: {
+    short: buildHardShort,
+    long: buildHardLong,
+  },
+};
+
+export const sentenceBank = difficulties.reduce((difficultyAccumulator, difficulty) => {
+  difficultyAccumulator[difficulty] = themeOrder.reduce((themeAccumulator, theme) => {
+    themeAccumulator[theme] = lengths.reduce((lengthAccumulator, length) => {
+      lengthAccumulator[length] = builders[difficulty][length](theme);
+      return lengthAccumulator;
+    }, {});
+
+    return themeAccumulator;
+  }, {});
+
+  return difficultyAccumulator;
+}, {});

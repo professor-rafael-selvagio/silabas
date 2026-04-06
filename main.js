@@ -1,7 +1,7 @@
 import "./style.css";
 import Hypher from "hypher";
 import portuguese from "hyphenation.pt";
-import { sentenceBank } from "./sentences.js";
+import { sentenceBank, themeConfig } from "./sentences.js";
 
 const syllableEngine = new Hypher({
   ...portuguese,
@@ -17,25 +17,51 @@ const speakButton = document.querySelector("#speak-btn");
 const fullscreenButton = document.querySelector("#fullscreen-btn");
 const output = document.querySelector("#output");
 const status = document.querySelector("#status");
+const themeSelect = document.querySelector("#theme-select");
+const contrastToggle = document.querySelector("#contrast-toggle");
+const autoSpeakToggle = document.querySelector("#auto-speak-toggle");
+const themeDescription = document.querySelector("#theme-description");
+const encouragement = document.querySelector("#encouragement");
+const summaryTheme = document.querySelector("#summary-theme");
+const wordCount = document.querySelector("#word-count");
+const syllableCount = document.querySelector("#syllable-count");
+const focusWord = document.querySelector("#focus-word");
+const fontButtons = {
+  small: document.querySelector("#font-small-btn"),
+  medium: document.querySelector("#font-medium-btn"),
+  large: document.querySelector("#font-large-btn"),
+};
 const difficultyButtons = {
   easy: document.querySelector("#difficulty-easy"),
   medium: document.querySelector("#difficulty-medium"),
   hard: document.querySelector("#difficulty-hard"),
 };
 
+const preferencesKey = "silabas.preferences.v1";
 const wordRegex = /[\p{L}\p{M}]+(?:['-][\p{L}\p{M}]+)*/gu;
 const difficultyNames = {
   easy: "fácil",
   medium: "média",
   hard: "difícil",
 };
-
-let selectedDifficulty = "easy";
-let lastSentenceByGroup = {
-  easy: { short: "", long: "" },
-  medium: { short: "", long: "" },
-  hard: { short: "", long: "" },
+const fontScaleValues = {
+  small: "0.82",
+  medium: "1",
+  large: "1.18",
 };
+let selectedDifficulty = "easy";
+let selectedTheme = "all";
+let selectedFontScale = "medium";
+let highContrastEnabled = false;
+let autoSpeakEnabled = false;
+let lastSentenceByGroup = Object.keys(sentenceBank).reduce((difficultyAccumulator, difficulty) => {
+  difficultyAccumulator[difficulty] = Object.keys(themeConfig).reduce((themeAccumulator, theme) => {
+    themeAccumulator[theme] = { short: "", long: "" };
+    return themeAccumulator;
+  }, {});
+
+  return difficultyAccumulator;
+}, {});
 
 function cancelSpeech() {
   window.speechSynthesis.cancel();
@@ -99,20 +125,121 @@ function tokenizeSentence(sentence) {
   return tokens;
 }
 
+function loadPreferences() {
+  try {
+    const rawPreferences = localStorage.getItem(preferencesKey);
+    if (!rawPreferences) {
+      return;
+    }
+
+    const preferences = JSON.parse(rawPreferences);
+    if (preferences.difficulty && difficultyNames[preferences.difficulty]) {
+      selectedDifficulty = preferences.difficulty;
+    }
+    if (preferences.theme && themeConfig[preferences.theme]) {
+      selectedTheme = preferences.theme;
+    }
+    if (preferences.fontScale && fontScaleValues[preferences.fontScale]) {
+      selectedFontScale = preferences.fontScale;
+    }
+    highContrastEnabled = Boolean(preferences.highContrastEnabled);
+    autoSpeakEnabled = Boolean(preferences.autoSpeakEnabled);
+  } catch {
+    localStorage.removeItem(preferencesKey);
+  }
+}
+
+function savePreferences() {
+  const preferences = {
+    difficulty: selectedDifficulty,
+    theme: selectedTheme,
+    fontScale: selectedFontScale,
+    highContrastEnabled,
+    autoSpeakEnabled,
+  };
+
+  localStorage.setItem(preferencesKey, JSON.stringify(preferences));
+}
+
+function applyVisualPreferences() {
+  document.body.dataset.contrast = highContrastEnabled ? "high" : "normal";
+  document.documentElement.style.setProperty(
+    "--output-font-scale",
+    fontScaleValues[selectedFontScale],
+  );
+
+  Object.entries(fontButtons).forEach(([fontScale, button]) => {
+    button.classList.toggle("is-active", fontScale === selectedFontScale);
+  });
+
+  contrastToggle.classList.toggle("is-active", highContrastEnabled);
+  contrastToggle.setAttribute("aria-pressed", String(highContrastEnabled));
+  autoSpeakToggle.classList.toggle("is-active", autoSpeakEnabled);
+  autoSpeakToggle.setAttribute("aria-pressed", String(autoSpeakEnabled));
+  themeSelect.value = selectedTheme;
+  summaryTheme.textContent = themeConfig[selectedTheme].label;
+  themeDescription.textContent = themeConfig[selectedTheme].description;
+}
+
 function updateDifficultyButtons() {
   Object.entries(difficultyButtons).forEach(([difficulty, button]) => {
     button.classList.toggle("is-active", difficulty === selectedDifficulty);
   });
 }
 
+function buildEncouragement(totalWords, totalSyllables) {
+  if (totalWords === 0) {
+    return "Comece com frases curtas e toque sílaba por sílaba.";
+  }
+
+  if (selectedDifficulty === "easy") {
+    return "Leia devagar e use o áudio para confirmar cada pedaço da palavra.";
+  }
+
+  if (selectedDifficulty === "medium") {
+    return totalSyllables > 12
+      ? "Boa prática de fluência: leia a frase inteira e depois volte nas sílabas."
+      : "Experimente ler a frase e depois tocar apenas nas palavras mais difíceis.";
+  }
+
+  return totalWords > 7
+    ? "Desafio forte: leia primeiro a frase toda e depois revise as palavras longas."
+    : "Tente identificar as sílabas mais complexas antes de ouvir o áudio.";
+}
+
+function updateStudySummary(tokens) {
+  const wordTokens = tokens.filter((token) => token.type === "word");
+  const totalWords = wordTokens.length;
+  const totalSyllables = wordTokens.reduce((sum, token) => sum + token.syllables.length, 0);
+  const longestWord = wordTokens.reduce((largest, token) => {
+    return token.value.length > largest.length ? token.value : largest;
+  }, "");
+
+  wordCount.textContent = String(totalWords);
+  syllableCount.textContent = String(totalSyllables);
+  focusWord.textContent = longestWord ? toDisplayUppercase(longestWord) : "-";
+  encouragement.textContent = buildEncouragement(totalWords, totalSyllables);
+}
+
 function setDifficulty(difficulty) {
   selectedDifficulty = difficulty;
   updateDifficultyButtons();
+  savePreferences();
+  encouragement.textContent =
+    `Nível ${difficultyNames[difficulty]} selecionado. Escolha uma frase curta ou maior.`;
   status.textContent = `Nível ${difficultyNames[difficulty]} selecionado. Escolha uma frase curta ou maior.`;
 }
 
+function getFilteredOptions(length) {
+  if (selectedTheme === "all") {
+    return Object.entries(sentenceBank[selectedDifficulty]).flatMap(([, groups]) => groups[length]);
+  }
+
+  return sentenceBank[selectedDifficulty][selectedTheme][length];
+}
+
 function pickRandomSentence(length) {
-  const options = sentenceBank[selectedDifficulty][length];
+  const options = getFilteredOptions(length);
 
   if (options.length === 1) {
     return options[0];
@@ -120,12 +247,19 @@ function pickRandomSentence(length) {
 
   let nextSentence = options[Math.floor(Math.random() * options.length)];
 
-  while (nextSentence === lastSentenceByGroup[selectedDifficulty][length]) {
+  while (nextSentence === lastSentenceByGroup[selectedDifficulty][selectedTheme][length]) {
     nextSentence = options[Math.floor(Math.random() * options.length)];
   }
 
-  lastSentenceByGroup[selectedDifficulty][length] = nextSentence;
+  lastSentenceByGroup[selectedDifficulty][selectedTheme][length] = nextSentence;
   return toDisplayUppercase(nextSentence);
+}
+
+function activateSyllable(button) {
+  output.querySelectorAll(".syllable.is-playing").forEach((syllableButton) => {
+    syllableButton.classList.remove("is-playing");
+  });
+  button.classList.add("is-playing");
 }
 
 function renderSentence() {
@@ -134,6 +268,7 @@ function renderSentence() {
   output.innerHTML = "";
 
   if (!sentence) {
+    updateStudySummary([]);
     status.textContent = "Digite uma frase em português para separar as sílabas.";
     output.innerHTML = '<p class="placeholder">A frase separada aparecerá aqui.</p>';
     return;
@@ -150,6 +285,7 @@ function renderSentence() {
 
     const wordWrapper = document.createElement("span");
     wordWrapper.className = "word";
+    wordWrapper.setAttribute("data-word", token.value);
 
     token.syllables.forEach((syllable, index) => {
       const syllableButton = document.createElement("button");
@@ -158,6 +294,7 @@ function renderSentence() {
       syllableButton.textContent = syllable;
       syllableButton.setAttribute("aria-label", `Ouvir sílaba ${syllable}`);
       syllableButton.addEventListener("click", () => {
+        activateSyllable(syllableButton);
         status.textContent = `Reproduzindo a sílaba "${syllable}".`;
         speakText(syllable);
       });
@@ -171,11 +308,30 @@ function renderSentence() {
       }
     });
 
+    wordWrapper.addEventListener("dblclick", () => {
+      status.textContent = `Reproduzindo a palavra "${toDisplayUppercase(token.value)}".`;
+      speakText(token.value);
+    });
+
     fragment.append(wordWrapper);
   }
 
   output.append(fragment);
-  status.textContent = "Frase processada. Toque em uma sílaba ou no botão de áudio.";
+  updateStudySummary(tokens);
+  status.textContent =
+    'Frase processada. Toque em uma sílaba, ou dê dois cliques em uma palavra para ouvi-la inteira.';
+}
+
+function processRandomSentence(length) {
+  input.value = pickRandomSentence(length);
+  renderSentence();
+  const themeLabel = themeConfig[selectedTheme].label.toLocaleLowerCase("pt-BR");
+  status.textContent =
+    `Frase ${length === "short" ? "curta" : "maior"} de nível ${difficultyNames[selectedDifficulty]} sorteada no tema ${themeLabel}.`;
+
+  if (autoSpeakEnabled) {
+    speakText(input.value);
+  }
 }
 
 async function toggleFullscreen() {
@@ -198,24 +354,11 @@ document.addEventListener("fullscreenchange", () => {
 });
 
 processButton.addEventListener("click", renderSentence);
-difficultyButtons.easy.addEventListener("click", () => {
-  setDifficulty("easy");
-});
-difficultyButtons.medium.addEventListener("click", () => {
-  setDifficulty("medium");
-});
-difficultyButtons.hard.addEventListener("click", () => {
-  setDifficulty("hard");
-});
 randomShortButton.addEventListener("click", () => {
-  input.value = pickRandomSentence("short");
-  renderSentence();
-  status.textContent = `Frase curta de nível ${difficultyNames[selectedDifficulty]} sorteada.`;
+  processRandomSentence("short");
 });
 randomLongButton.addEventListener("click", () => {
-  input.value = pickRandomSentence("long");
-  renderSentence();
-  status.textContent = `Frase maior de nível ${difficultyNames[selectedDifficulty]} sorteada.`;
+  processRandomSentence("long");
 });
 speakButton.addEventListener("click", () => {
   status.textContent = "Reproduzindo a frase completa.";
@@ -225,6 +368,51 @@ fullscreenButton.addEventListener("click", () => {
   toggleFullscreen().catch(() => {
     status.textContent = "Seu navegador bloqueou a tela cheia.";
   });
+});
+
+themeSelect.addEventListener("change", () => {
+  selectedTheme = themeSelect.value;
+  applyVisualPreferences();
+  savePreferences();
+  encouragement.textContent = themeConfig[selectedTheme].description;
+  status.textContent = `Tema ${themeConfig[selectedTheme].label.toLocaleLowerCase("pt-BR")} selecionado.`;
+});
+
+contrastToggle.addEventListener("click", () => {
+  highContrastEnabled = !highContrastEnabled;
+  applyVisualPreferences();
+  savePreferences();
+  status.textContent = highContrastEnabled
+    ? "Contraste alto ativado."
+    : "Contraste alto desativado.";
+});
+
+autoSpeakToggle.addEventListener("click", () => {
+  autoSpeakEnabled = !autoSpeakEnabled;
+  applyVisualPreferences();
+  savePreferences();
+  status.textContent = autoSpeakEnabled
+    ? "As frases sorteadas serão lidas automaticamente."
+    : "As frases sorteadas não serão lidas automaticamente.";
+});
+
+Object.entries(fontButtons).forEach(([fontScale, button]) => {
+  button.addEventListener("click", () => {
+    selectedFontScale = fontScale;
+    applyVisualPreferences();
+    savePreferences();
+    status.textContent = `Tamanho de leitura ${fontScale === "small" ? "menor" : fontScale === "medium" ? "médio" : "maior"} aplicado.`;
+  });
+});
+
+difficultyButtons.easy.addEventListener("click", () => {
+  setDifficulty("easy");
+});
+difficultyButtons.medium.addEventListener("click", () => {
+  setDifficulty("medium");
+});
+difficultyButtons.hard.addEventListener("click", () => {
+  setDifficulty("hard");
 });
 
 input.addEventListener("input", () => {
@@ -237,6 +425,8 @@ input.addEventListener("keydown", (event) => {
   }
 });
 
+loadPreferences();
 updateDifficultyButtons();
+applyVisualPreferences();
 input.value = toDisplayUppercase(input.value);
 renderSentence();

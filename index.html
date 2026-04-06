@@ -18,18 +18,56 @@
         <aside class="sidebar">
           <section class="hero">
             <nav class="top-nav" aria-label="Atividades">
-              <a class="nav-link is-current" href="./index.html">Sílabas</a>
+              <a class="nav-link is-current" href="./index.html">Frases</a>
               <a class="nav-link" href="./letras.html">Letras e sílabas</a>
-              <a class="nav-link" href="./versions.html">Versões</a>
+              <a class="nav-link icon-only-link" href="./versions.html" aria-label="Versões">
+                <span aria-hidden="true">🕘</span>
+              </a>
             </nav>
             <p class="eyebrow">Alfabetização infantil</p>
             <h1>Sílabas Divertidas</h1>
             <p class="hero-copy">
-              Digite uma frase e toque nas sílabas para ouvir cada pedaço da palavra.
+              Digite uma frase, escolha um tema ou sorteie exemplos para ouvir e explorar cada
+              sílaba com mais apoio visual.
             </p>
           </section>
 
           <section class="controls">
+            <div class="preferences-panel" aria-label="Preferências de leitura">
+              <div class="control-block">
+                <label class="input-label" for="theme-select">Tema das frases</label>
+                <select id="theme-select" class="select-control">
+                  <option value="all">Todos os temas</option>
+                  <option value="animals">Animais</option>
+                  <option value="home">Casa e rotina</option>
+                  <option value="school">Escola e leitura</option>
+                  <option value="nature">Natureza</option>
+                  <option value="fantasy">Fantasia e aventura</option>
+                </select>
+              </div>
+
+              <div class="control-block">
+                <p class="difficulty-title">Tamanho da leitura</p>
+                <div class="difficulty-row" aria-label="Tamanho da fonte das sílabas">
+                  <button id="font-small-btn" class="difficulty-btn" type="button">A</button>
+                  <button id="font-medium-btn" class="difficulty-btn is-active" type="button">
+                    A+
+                  </button>
+                  <button id="font-large-btn" class="difficulty-btn" type="button">A++
+                  </button>
+                </div>
+              </div>
+
+              <div class="toggle-grid">
+                <button id="contrast-toggle" class="toggle-btn" type="button" aria-pressed="false">
+                  Contraste alto
+                </button>
+                <button id="auto-speak-toggle" class="toggle-btn" type="button" aria-pressed="false">
+                  Ouvir ao sortear
+                </button>
+              </div>
+            </div>
+
             <div class="difficulty-panel" aria-label="Escolha o nível">
               <p class="difficulty-title">Nível de dificuldade</p>
               <div class="difficulty-row">
@@ -64,16 +102,25 @@
               >A BOLA É AZUL.</textarea>
             </div>
             <div class="button-row">
-              <button id="process-btn" class="primary-btn" type="button">Separar sílabas</button>
-              <button id="speak-btn" class="icon-btn" type="button" aria-label="Ouvir frase completa">
+              <button id="process-btn" class="primary-btn" type="button">SE-PA-RAR</button>
+              <button id="speak-btn" class="icon-btn icon-btn-only" type="button" aria-label="Ouvir frase completa">
                 <span aria-hidden="true">🔊</span>
-                <span>Ouvir frase</span>
               </button>
-              <button id="fullscreen-btn" class="secondary-btn" type="button">
-                Tela cheia
+              <button id="fullscreen-btn" class="secondary-btn icon-btn-only fullscreen-btn" type="button" aria-label="Tela cheia">
+                <span aria-hidden="true">⛶</span>
               </button>
             </div>
             <p id="status" class="status">Toque em "Separar sílabas" para atualizar a frase.</p>
+
+            <section class="study-note" aria-label="Apoio pedagógico">
+              <p class="study-note-title">Apoio da atividade</p>
+              <p id="theme-description" class="study-note-copy">
+                Use qualquer tema para praticar frases variadas.
+              </p>
+              <p id="encouragement" class="study-note-highlight">
+                Comece com frases curtas e toque sílaba por sílaba.
+              </p>
+            </section>
           </section>
         </aside>
 
@@ -85,7 +132,29 @@
             </div>
             <p class="panel-tip">A área abaixo é o foco principal da atividade.</p>
           </div>
+          <section class="summary-strip" aria-label="Resumo da frase">
+            <article class="summary-card">
+              <p class="summary-label">Tema</p>
+              <p id="summary-theme" class="summary-value">Todos os temas</p>
+            </article>
+            <article class="summary-card">
+              <p class="summary-label">Palavras</p>
+              <p id="word-count" class="summary-value">0</p>
+            </article>
+            <article class="summary-card">
+              <p class="summary-label">Sílabas</p>
+              <p id="syllable-count" class="summary-value">0</p>
+            </article>
+            <article class="summary-card summary-card-wide">
+              <p class="summary-label">Palavra de foco</p>
+              <p id="focus-word" class="summary-value">-</p>
+            </article>
+          </section>
           <div id="output" class="output" aria-live="polite"></div>
+          <footer class="app-footer">
+            <span>Versão atual da interface: 1.3.0</span>
+            <span>Preferências ficam salvas neste navegador.</span>
+          </footer>
         </section>
       </main>
     </div>

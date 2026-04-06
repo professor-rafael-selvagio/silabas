@@ -1,8 +1,8 @@
 # Silabas Divertidas
 
-Aplicativo educacional interativo para apoiar o processo de alfabetizacao com foco em separacao silabica, reconhecimento visual de letras e pratica com leitura em portugues do Brasil.
+Aplicativo educacional interativo para apoiar a alfabetizacao infantil com foco em separacao silabica, reconhecimento visual de letras, pratica de leitura e apoio sonoro em portugues do Brasil.
 
-O projeto foi pensado para uso simples e direto: a crianca pode digitar ou sortear frases, visualizar a divisao em silabas, tocar em cada parte para ouvir a pronuncia e navegar por atividades complementares.
+O projeto funciona no navegador e foi pensado para uso simples, visual e direto, tanto por criancas quanto por responsaveis e educadores.
 
 ## Acesso
 
@@ -14,38 +14,52 @@ Paginas disponiveis:
 
 - `https://professor-rafael-selvagio.github.io/silabas/`
 - `https://professor-rafael-selvagio.github.io/silabas/letras.html`
+- `https://professor-rafael-selvagio.github.io/silabas/progresso.html`
+- `https://professor-rafael-selvagio.github.io/silabas/responsaveis.html`
+- `https://professor-rafael-selvagio.github.io/silabas/sobre.html`
+- `https://professor-rafael-selvagio.github.io/silabas/autor.html`
 - `https://professor-rafael-selvagio.github.io/silabas/versions.html`
+
+Repositorio:
+
+- `https://github.com/professor-rafael-selvagio/silabas`
 
 ## Visao Geral
 
-O projeto hoje possui tres frentes principais:
+O projeto hoje esta organizado em frentes complementares:
 
-- Pagina de silabas com foco na divisao silabica e reproducao de audio.
-- Pagina de letras e familias silabicas para apoio visual na alfabetizacao.
-- Pagina de versoes com o historico resumido da evolucao do projeto.
+- pagina principal de frases com separacao silabica e sintese de voz
+- pagina de letras e familias silabicas
+- biblioteca de musicas educativas com player e letras
+- pagina de progresso salvo no navegador
+- pagina para responsaveis e educadores
+- pagina sobre o projeto
+- pagina do autor
+- pagina publica de versoes
 
 ## Funcionalidades
 
-- Separacao silabica automatica de palavras em portugues.
-- Renderizacao visual destacando as silabas como botoes clicaveis.
-- Reproducao individual de silabas com sintese de voz do navegador.
-- Reproducao da frase completa.
-- Sorteio de frases por nivel de dificuldade.
-- Frases separadas por tamanho:
-  - curtas
-  - maiores
-- Niveis de dificuldade:
-  - facil
-  - medio
-  - dificil
-- Tela complementar com letras maiusculas e minusculas.
-- Tela complementar com familias silabicas.
-- Modo tela cheia.
-- Layout adaptado para desktop e mobile.
+- separacao silabica automatica em portugues
+- clique em cada silaba para ouvir a pronuncia
+- reproducao da frase completa
+- sorteio de frases por nivel e tamanho
+- frases organizadas por temas
+- modo crianca e modo completo
+- colorizacao de silabas
+- contraste alto
+- fonte amigavel para leitura
+- tamanho ajustavel da leitura
+- audio automatico ao sortear
+- favorito de frases
+- frases recentes e estatisticas locais
+- tela de letras maiusculas, minusculas e familias silabicas
+- musicas educativas com modal, audio e letras em texto
+- menu de navegacao com acessos principais e opcoes extras
+- pagina do autor com foto, links e QR Codes
 
-## Estrutura Das Paginas
+## Paginas
 
-### 1. Pagina principal
+### 1. Frases
 
 Arquivo: [index.html](/Users/rafael.selvagio/Projetos/Eloah/silabas/index.html)
 
@@ -53,81 +67,154 @@ Responsavel por:
 
 - receber a frase digitada
 - sortear frases prontas
-- processar e separar as palavras em silabas
-- permitir ouvir cada silaba
-- destacar a area de resultado como elemento central da experiencia
+- separar palavras em silabas
+- tocar silabas e frase completa
+- salvar preferencias locais
+- mostrar progresso local e favoritas
 
 Arquivos relacionados:
 
 - [main.js](/Users/rafael.selvagio/Projetos/Eloah/silabas/main.js)
 - [style.css](/Users/rafael.selvagio/Projetos/Eloah/silabas/style.css)
 - [sentences.js](/Users/rafael.selvagio/Projetos/Eloah/silabas/sentences.js)
+- [app-data.js](/Users/rafael.selvagio/Projetos/Eloah/silabas/app-data.js)
 
-### 2. Pagina de letras e silabas
+### 2. Letras e Silabas
 
 Arquivo: [letras.html](/Users/rafael.selvagio/Projetos/Eloah/silabas/letras.html)
 
 Responsavel por:
 
 - mostrar letras maiusculas e minusculas
-- permitir ouvir letras e silabas
-- exibir familias silabicas em organizacao visual
+- mostrar familias silabicas
+- reproduzir audio de letras e silabas
+- oferecer musicas educativas de apoio
 
 Arquivos relacionados:
 
 - [letras.js](/Users/rafael.selvagio/Projetos/Eloah/silabas/letras.js)
 - [letras.css](/Users/rafael.selvagio/Projetos/Eloah/silabas/letras.css)
+- [audio/alfabeto.mp3](/Users/rafael.selvagio/Projetos/Eloah/silabas/audio/alfabeto.mp3)
+- [audio/aeiou.mp3](/Users/rafael.selvagio/Projetos/Eloah/silabas/audio/aeiou.mp3)
+- [audio/abelha.mp3](/Users/rafael.selvagio/Projetos/Eloah/silabas/audio/abelha.mp3)
+- [audio/bibu.mp3](/Users/rafael.selvagio/Projetos/Eloah/silabas/audio/bibu.mp3)
+- [audio/rimadosapato.mp3](/Users/rafael.selvagio/Projetos/Eloah/silabas/audio/rimadosapato.mp3)
+- [audio/trembabe.mp3](/Users/rafael.selvagio/Projetos/Eloah/silabas/audio/trembabe.mp3)
 
-### 3. Pagina de historico
+### 3. Progresso
 
-Arquivo: [versions.html](/Users/rafael.selvagio/Projetos/Eloah/silabas/versions.html)
+Arquivo: [progresso.html](/Users/rafael.selvagio/Projetos/Eloah/silabas/progresso.html)
 
 Responsavel por:
 
-- resumir as principais versoes do projeto
-- servir como pagina de apoio para consulta e documentacao publica
+- exibir frases recentes
+- exibir frases favoritas
+- mostrar musicas abertas recentemente
+- mostrar paginas visitadas
+- permitir limpar o progresso local
 
 Arquivos relacionados:
 
-- [versions.css](/Users/rafael.selvagio/Projetos/Eloah/silabas/versions.css)
+- [progresso.js](/Users/rafael.selvagio/Projetos/Eloah/silabas/progresso.js)
+- [app-data.js](/Users/rafael.selvagio/Projetos/Eloah/silabas/app-data.js)
+
+### 4. Apoio Institucional
+
+Arquivos:
+
+- [responsaveis.html](/Users/rafael.selvagio/Projetos/Eloah/silabas/responsaveis.html)
+- [sobre.html](/Users/rafael.selvagio/Projetos/Eloah/silabas/sobre.html)
+- [autor.html](/Users/rafael.selvagio/Projetos/Eloah/silabas/autor.html)
+- [versions.html](/Users/rafael.selvagio/Projetos/Eloah/silabas/versions.html)
+
+Essas paginas cobrem:
+
+- orientacoes para responsaveis
+- explicacao do projeto
+- autoria, tecnologias e links do autor
+- historico de versoes do sistema
 
 ## Banco De Frases
 
-As frases usadas no sorteio ficam em um arquivo proprio:
+As frases ficam em:
 
 - [sentences.js](/Users/rafael.selvagio/Projetos/Eloah/silabas/sentences.js)
 
-Esse arquivo centraliza o objeto `sentenceBank`, organizado por:
+O banco foi organizado por:
 
-- nivel:
-  - `easy`
-  - `medium`
-  - `hard`
-- tamanho:
-  - `short`
-  - `long`
+- tema
+- nivel
+- tamanho
 
-Isso deixa o [main.js](/Users/rafael.selvagio/Projetos/Eloah/silabas/main.js) mais limpo e facilita:
+Isso permite sorteio mais controlado, manutencao mais simples e expansao futura sem poluir a logica principal do app.
 
-- ampliar o numero de frases
-- revisar o nivel pedagogico
-- separar por temas no futuro
-- migrar depois para JSON ou backend, se necessario
+## Persistencia Local
+
+Os dados locais ficam centralizados em:
+
+- [app-data.js](/Users/rafael.selvagio/Projetos/Eloah/silabas/app-data.js)
+
+Hoje o navegador salva:
+
+- frases processadas
+- frases favoritas
+- frases recentes
+- musicas abertas
+- paginas visitadas
+- quantidade de silabas tocadas
+- preferencias de leitura e visual
+
+Nada disso depende de backend.
+
+## Musicas Educativas
+
+Faixas atualmente integradas:
+
+- Alfabeto
+- AEIOU
+- Abelha
+- Bibu
+- Rima do Sapato
+- Trem Bebe
+
+Observacao importante:
+
+- as musicas foram criadas com Suno AI
+- o autor informou que nao possui direitos comerciais sobre essas faixas
+- o uso no projeto deve ser entendido como educacional e demonstrativo
+
+## Acessibilidade
+
+O projeto inclui:
+
+- skip link para pular direto ao conteudo
+- estados de foco visiveis
+- contraste alto
+- fonte amigavel para leitura
+- respeito a `prefers-reduced-motion`
+- modo crianca com menos distracoes
 
 ## Tecnologias Utilizadas
 
 - HTML
 - CSS
 - JavaScript
-- [Vite](https://vitejs.dev/) para desenvolvimento e build
-- [`hypher`](https://www.npmjs.com/package/hypher) para separacao silabica
-- [`hyphenation.pt`](https://www.npmjs.com/package/hyphenation.pt) para hifenizacao em portugues
-- Web Speech API para reproducao de audio no navegador
+- [Vite](https://vitejs.dev/)
+- [Hypher](https://www.npmjs.com/package/hypher)
+- [hyphenation.pt](https://www.npmjs.com/package/hyphenation.pt)
+- Web Speech API
+- VS Code
+- Codex
 
 ## Requisitos
 
-- Node.js 18+ ou superior
+- Node.js 24 ou superior recomendado
 - npm
+
+Ambiente usado mais recentemente neste projeto:
+
+- `node v24.14.1`
+- `npm 11.11.0`
 
 ## Como Executar Localmente
 
@@ -143,17 +230,9 @@ npm install
 npm run dev
 ```
 
-Depois, abra no navegador a URL exibida pelo Vite.
-
-Como o projeto usa a base `/silabas/`, o caminho local normalmente sera:
+Como o projeto usa a base `/silabas/`, o acesso local normalmente sera:
 
 - `http://localhost:5173/silabas/`
-
-Paginas locais esperadas:
-
-- `http://localhost:5173/silabas/`
-- `http://localhost:5173/silabas/letras.html`
-- `http://localhost:5173/silabas/versions.html`
 
 ## Build De Producao
 
@@ -171,20 +250,13 @@ npm run preview
 
 ## Publicacao No GitHub Pages
 
-O projeto esta preparado para deploy no GitHub Pages com build automatizado.
-
 Fluxo esperado:
 
-1. Fazer commit das alteracoes.
-2. Enviar para a branch `main`.
-3. O GitHub Actions executa o build.
-4. O conteudo de `dist/` e publicado no GitHub Pages.
+1. fazer commit das alteracoes
+2. enviar para a branch `main`
+3. o GitHub Pages publica a build automatica
 
-Arquivo de configuracao principal:
-
-- [.github/workflows/deploy-pages.yml](/Users/rafael.selvagio/Projetos/Eloah/silabas/.github/workflows/deploy-pages.yml)
-
-Configuracao de multiplas paginas no build:
+Configuracao principal:
 
 - [vite.config.js](/Users/rafael.selvagio/Projetos/Eloah/silabas/vite.config.js)
 
@@ -194,40 +266,40 @@ Configuracao de multiplas paginas no build:
 .
 |-- index.html
 |-- letras.html
+|-- progresso.html
+|-- responsaveis.html
+|-- sobre.html
+|-- autor.html
 |-- versions.html
 |-- main.js
 |-- letras.js
+|-- progresso.js
+|-- static-page.js
+|-- nav-menu.js
+|-- app-data.js
 |-- sentences.js
 |-- style.css
 |-- letras.css
+|-- extra-pages.css
 |-- versions.css
+|-- audio/
+|-- imagem/
 |-- vite.config.js
-|-- package.json
-`-- .github/
+`-- package.json
 ```
 
-## Evolucao Do Projeto
+## Estado Atual
 
-Resumo das principais evolucoes ja realizadas:
+Versao publicada mais recente:
 
-1. Criacao da pagina principal para separacao silabica.
-2. Inclusao de audio por sintese de voz.
-3. Criacao da pagina de letras e familias silabicas.
-4. Expansao das familias silabicas.
-5. Melhoria do layout com melhor aproveitamento do espaco.
-6. Reorganizacao visual com foco maior na area de resultado.
-7. Correcao do alfabeto com inclusao de `K`, `W` e `Y`.
-8. Ampliacao do banco de frases.
-9. Extracao das frases para arquivo dedicado.
-10. Criacao da pagina publica de versoes.
+- `1.7.5`
 
-## Possiveis Proximos Passos
+Destaques recentes:
 
-- Separar frases por tema, serie ou faixa etaria.
-- Adicionar mais controles pedagogicos por nivel.
-- Criar feedback visual de acerto para atividades guiadas.
-- Integrar captura de microfone para leitura oral.
-- Adicionar backend no futuro para reconhecimento de fala mais robusto.
+- menu principal reorganizado com tres pontinhos para paginas secundarias
+- pagina do autor com foto, links e QR Codes
+- fechamento automatico do menu apos navegacao
+- musicas educativas com letras em modal
 
 ## Objetivo Educacional
 
@@ -235,10 +307,10 @@ O foco do projeto e apoiar a alfabetizacao de forma visual, interativa e acessiv
 
 - reconhecimento de letras
 - identificacao de silabas
-- leitura de palavras
+- leitura de palavras e frases
 - escuta ativa
 - associacao entre escrita e som
 
 ## Licenca
 
-Este projeto esta sem licenca definida no momento. Se desejar, o proximo passo pode ser adicionar uma licenca explicita ao repositorio.
+O `package.json` esta com `ISC`, mas se quiser posso depois alinhar isso com uma licenca explicita mais adequada para o repositorio e para os conteudos incluidos.

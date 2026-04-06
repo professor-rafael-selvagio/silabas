@@ -71,6 +71,11 @@ const songCatalog = {
     audioUrl: new URL("./audio/abelha.mp3", import.meta.url),
     lyricsUrl: new URL("./audio/abelha.txt", import.meta.url),
   },
+  trembabe: {
+    title: "Trem Babê",
+    audioUrl: new URL("./audio/trembabe.mp3", import.meta.url),
+    lyricsUrl: new URL("./audio/trembabe.txt", import.meta.url),
+  },
 };
 
 function speakText(text) {

@@ -1,6 +1,7 @@
 import "./style.css";
 import Hypher from "hypher";
 import portuguese from "hyphenation.pt";
+import { sentenceBank } from "./sentences.js";
 
 const syllableEngine = new Hypher({
   ...portuguese,
@@ -23,65 +24,6 @@ const difficultyButtons = {
 };
 
 const wordRegex = /[\p{L}\p{M}]+(?:['-][\p{L}\p{M}]+)*/gu;
-const sentenceBank = {
-  easy: {
-    short: [
-      "A bola rola.",
-      "O gato mia.",
-      "A fada voa.",
-      "O pato nada.",
-      "A vaca muge.",
-      "O sapo pula.",
-      "A lua brilha.",
-      "O sol aquece.",
-    ],
-    long: [
-      "A bola azul rola no chao.",
-      "O gato preto dorme no sofa.",
-      "A fada boa voa no ceu.",
-      "O pato nada no lago raso.",
-      "A vaca branca come no pasto.",
-      "O sapo verde pula na lama.",
-    ],
-  },
-  medium: {
-    short: [
-      "A menina canta feliz.",
-      "O coelho corre rapido.",
-      "A janela fica aberta.",
-      "O menino lava a mao.",
-      "A abelha pousa na flor.",
-      "O cavalo bebe agua.",
-    ],
-    long: [
-      "A menina canta baixinho perto da mamae.",
-      "O coelho branco corre no jardim de casa.",
-      "O menino lava a mao antes do lanche.",
-      "A abelha pequena pousa na flor amarela.",
-      "O cavalo castanho bebe agua no balde.",
-      "A janela da sala fica aberta de manha.",
-    ],
-  },
-  hard: {
-    short: [
-      "A professora contou uma historia.",
-      "O passarinho fez ninho na arvore.",
-      "A formiga carregou uma folha.",
-      "O bombeiro apagou o fogo.",
-      "A familia saiu para passear.",
-      "O pirata achou um mapa.",
-    ],
-    long: [
-      "A professora contou uma historia bonita para a turma.",
-      "O passarinho fez ninho na arvore do quintal.",
-      "A formiga carregou uma folha grande ate a toca.",
-      "O bombeiro apagou o fogo com muita coragem.",
-      "A familia saiu para passear no parque da cidade.",
-      "O pirata achou um mapa velho dentro do bau.",
-    ],
-  },
-};
-
 const difficultyNames = {
   easy: "fácil",
   medium: "média",

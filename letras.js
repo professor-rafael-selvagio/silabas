@@ -1,10 +1,12 @@
 import "./letras.css";
+import { APP_VERSION, recordPageVisit, recordSongPlay } from "./app-data.js";
 
 const lessonGrid = document.querySelector("#lesson-grid");
 const lessonTitle = document.querySelector("#lesson-title");
 const lessonDescription = document.querySelector("#lesson-description");
 const lettersButton = document.querySelector("#letters-btn");
 const syllablesButton = document.querySelector("#syllables-btn");
+const versionLabel = document.querySelector(".page-version");
 const musicButtons = document.querySelectorAll("[data-song]");
 const musicModal = document.querySelector("#music-modal");
 const closeMusicModalButton = document.querySelector("#close-music-modal");
@@ -153,6 +155,7 @@ async function openSongModal(songKey) {
     return;
   }
 
+  recordSongPlay(song.title);
   musicModalTitle.textContent = song.title;
   musicPlayer.src = song.audioUrl.href;
   musicPlayer.load();
@@ -211,3 +214,5 @@ document.addEventListener("keydown", (event) => {
 });
 
 setActiveLesson("letters");
+recordPageVisit("letras");
+versionLabel.textContent = `Versão atual da interface: ${APP_VERSION}`;

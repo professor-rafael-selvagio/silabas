@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progresso Local</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Nunito:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/extra-pages.css" />
+    <script type="module" src="/progresso.js"></script>
+  </head>
+  <body data-page-name="progresso">
+    <a class="skip-link" href="#progress-main">Pular para o conteúdo</a>
+    <div class="page-shell">
+      <main id="progress-main" class="page-card">
+        <header class="page-hero">
+          <nav class="top-nav" aria-label="Atividades">
+            <a class="nav-link" href="./index.html">Frases</a>
+            <a class="nav-link" href="./letras.html">Letras e sílabas</a>
+            <a class="nav-link is-current" href="./progresso.html">Progresso</a>
+            <a class="nav-link" href="./responsaveis.html">Responsáveis</a>
+            <a class="nav-link" href="./sobre.html">Sobre</a>
+            <a class="nav-link" href="./versions.html">Versões</a>
+          </nav>
+          <p class="eyebrow">Persistência local</p>
+          <h1>Progresso no navegador</h1>
+          <p class="page-copy">
+            Estes dados ficam salvos apenas neste navegador e ajudam a acompanhar o uso do app.
+          </p>
+        </header>
+
+        <section class="stats-grid" aria-label="Estatísticas locais">
+          <article class="stat-card">
+            <p class="stat-label">Frases processadas</p>
+            <p id="stat-phrases" class="stat-value">0</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">Sílabas ouvidas</p>
+            <p id="stat-syllables" class="stat-value">0</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">Músicas abertas</p>
+            <p id="stat-songs" class="stat-value">0</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">Favoritas</p>
+            <p id="stat-favorites" class="stat-value">0</p>
+          </article>
+        </section>
+
+        <section class="section-grid">
+          <article class="list-box">
+            <h3>Últimas frases</h3>
+            <ul id="recent-phrases"></ul>
+          </article>
+          <article class="list-box">
+            <h3>Favoritas</h3>
+            <ul id="favorite-phrases"></ul>
+          </article>
+          <article class="list-box">
+            <h3>Páginas visitadas</h3>
+            <ul id="visited-pages"></ul>
+          </article>
+          <article class="list-box">
+            <h3>Músicas recentes</h3>
+            <ul id="recent-songs"></ul>
+          </article>
+        </section>
+
+        <div class="action-row">
+          <button id="reset-progress-btn" class="action-btn" type="button">Limpar progresso local</button>
+        </div>
+
+        <footer class="page-footer">
+          <span class="page-version">Versão atual da interface: 1.7.0</span>
+          <span>Nada daqui é enviado para servidor.</span>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

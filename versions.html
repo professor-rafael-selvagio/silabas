@@ -11,14 +11,19 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/versions.css" />
+    <script type="module" src="/static-page.js"></script>
   </head>
-  <body>
+  <body data-page-name="versoes">
+    <a class="skip-link" href="#versions-main">Pular para o conteúdo</a>
     <div class="history-shell">
-      <main class="history-page">
+      <main id="versions-main" class="history-page">
         <header class="history-hero">
           <nav class="top-nav" aria-label="Atividades">
             <a class="nav-link" href="./index.html">Frases</a>
             <a class="nav-link" href="./letras.html">Letras e sílabas</a>
+            <a class="nav-link" href="./progresso.html">Progresso</a>
+            <a class="nav-link" href="./responsaveis.html">Responsáveis</a>
+            <a class="nav-link" href="./sobre.html">Sobre</a>
             <a class="nav-link is-current" href="./versions.html">Versões</a>
           </nav>
           <p class="eyebrow">Evolução do projeto</p>
@@ -55,6 +60,22 @@
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td><span class="version-badge">1.7.0</span></td>
+                  <td>Expansão</td>
+                  <td>Menu completo, acessibilidade e progresso local</td>
+                  <td>
+                    Inclusão de páginas extras no menu para <strong>Progresso</strong>,
+                    <strong>Responsáveis</strong> e <strong>Sobre</strong>, com persistência local
+                    de frases recentes, favoritas, sílabas ouvidas, músicas abertas e páginas
+                    visitadas. A tela principal também ganhou painel de progresso, fonte amigável,
+                    skip links, foco visível mais forte e refinamentos de navegação.
+                  </td>
+                  <td>
+                    Amplia a experiência sem backend, melhora acessibilidade e deixa o uso mais
+                    completo para criança, família e educador.
+                  </td>
+                </tr>
                 <tr>
                   <td><span class="version-badge">1.6.3</span></td>
                   <td>Interface</td>

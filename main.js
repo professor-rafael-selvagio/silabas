@@ -2,6 +2,15 @@ import "./style.css";
 import Hypher from "hypher";
 import portuguese from "hyphenation.pt";
 import { sentenceBank, themeConfig } from "./sentences.js";
+import {
+  APP_VERSION,
+  loadProgressData,
+  recordPageVisit,
+  recordPhraseProcessed,
+  recordRandomSentence,
+  recordSyllableClick,
+  toggleFavoritePhrase,
+} from "./app-data.js";
 
 const syllableEngine = new Hypher({
   ...portuguese,
@@ -14,11 +23,13 @@ const processButton = document.querySelector("#process-btn");
 const randomShortButton = document.querySelector("#random-short-btn");
 const randomLongButton = document.querySelector("#random-long-btn");
 const speakButton = document.querySelector("#speak-btn");
+const favoriteButton = document.querySelector("#favorite-btn");
 const fullscreenButton = document.querySelector("#fullscreen-btn");
 const output = document.querySelector("#output");
 const status = document.querySelector("#status");
 const themeSelect = document.querySelector("#theme-select");
 const contrastToggle = document.querySelector("#contrast-toggle");
+const dyslexiaToggle = document.querySelector("#dyslexia-toggle");
 const autoSpeakToggle = document.querySelector("#auto-speak-toggle");
 const colorToggle = document.querySelector("#color-toggle");
 const modeToggle = document.querySelector("#mode-toggle");
@@ -28,6 +39,12 @@ const summaryTheme = document.querySelector("#summary-theme");
 const wordCount = document.querySelector("#word-count");
 const syllableCount = document.querySelector("#syllable-count");
 const focusWord = document.querySelector("#focus-word");
+const localPhrasesCount = document.querySelector("#local-phrases-count");
+const localSyllablesCount = document.querySelector("#local-syllables-count");
+const localFavoritesCount = document.querySelector("#local-favorites-count");
+const favoriteList = document.querySelector("#favorite-list");
+const recentList = document.querySelector("#recent-list");
+const versionLabel = document.querySelector(".app-footer span");
 const fontButtons = {
   small: document.querySelector("#font-small-btn"),
   medium: document.querySelector("#font-medium-btn"),
@@ -51,11 +68,13 @@ const fontScaleValues = {
   medium: "1",
   large: "1.18",
 };
+
 let selectedDifficulty = "easy";
 let selectedTheme = "all";
 let selectedFontScale = "medium";
 let selectedMode = "full";
 let highContrastEnabled = false;
+let dyslexiaFontEnabled = false;
 let autoSpeakEnabled = false;
 let coloredSyllablesEnabled = true;
 let lastSentenceByGroup = Object.keys(sentenceBank).reduce((difficultyAccumulator, difficulty) => {
@@ -150,6 +169,7 @@ function loadPreferences() {
       selectedMode = preferences.mode;
     }
     highContrastEnabled = Boolean(preferences.highContrastEnabled);
+    dyslexiaFontEnabled = Boolean(preferences.dyslexiaFontEnabled);
     autoSpeakEnabled = Boolean(preferences.autoSpeakEnabled);
     coloredSyllablesEnabled = Boolean(preferences.coloredSyllablesEnabled);
   } catch {
@@ -158,26 +178,64 @@ function loadPreferences() {
 }
 
 function savePreferences() {
-  const preferences = {
-    difficulty: selectedDifficulty,
-    theme: selectedTheme,
-    fontScale: selectedFontScale,
-    mode: selectedMode,
-    highContrastEnabled,
-    autoSpeakEnabled,
-    coloredSyllablesEnabled,
-  };
+  localStorage.setItem(
+    preferencesKey,
+    JSON.stringify({
+      difficulty: selectedDifficulty,
+      theme: selectedTheme,
+      fontScale: selectedFontScale,
+      mode: selectedMode,
+      highContrastEnabled,
+      dyslexiaFontEnabled,
+      autoSpeakEnabled,
+      coloredSyllablesEnabled,
+    }),
+  );
+}
 
-  localStorage.setItem(preferencesKey, JSON.stringify(preferences));
+function syncFavoriteButton() {
+  const progress = loadProgressData();
+  const normalizedSentence = input.value.trim().toLocaleUpperCase("pt-BR");
+  const isFavorite = normalizedSentence && progress.favoritePhrases.includes(normalizedSentence);
+  favoriteButton.classList.toggle("is-active", Boolean(isFavorite));
+}
+
+function renderLocalProgress() {
+  const progress = loadProgressData();
+  localPhrasesCount.textContent = String(progress.totals.phrasesProcessed);
+  localSyllablesCount.textContent = String(progress.totals.syllableClicks);
+  localFavoritesCount.textContent = String(progress.favoritePhrases.length);
+
+  favoriteList.innerHTML = "";
+  recentList.innerHTML = "";
+
+  const favoriteItems = progress.favoritePhrases.length
+    ? progress.favoritePhrases
+    : ["Nenhuma frase favorita ainda."];
+  const recentItems = progress.recentPhrases.length
+    ? progress.recentPhrases
+    : ["Nenhuma frase processada ainda."];
+
+  favoriteItems.forEach((phrase) => {
+    const item = document.createElement("li");
+    item.textContent = phrase;
+    favoriteList.append(item);
+  });
+
+  recentItems.forEach((phrase) => {
+    const item = document.createElement("li");
+    item.textContent = phrase;
+    recentList.append(item);
+  });
+
+  syncFavoriteButton();
 }
 
 function applyVisualPreferences() {
   document.body.dataset.contrast = highContrastEnabled ? "high" : "normal";
   document.body.dataset.mode = selectedMode;
-  document.documentElement.style.setProperty(
-    "--output-font-scale",
-    fontScaleValues[selectedFontScale],
-  );
+  document.body.dataset.dyslexiaFont = dyslexiaFontEnabled ? "on" : "off";
+  document.documentElement.style.setProperty("--output-font-scale", fontScaleValues[selectedFontScale]);
 
   Object.entries(fontButtons).forEach(([fontScale, button]) => {
     button.classList.toggle("is-active", fontScale === selectedFontScale);
@@ -185,6 +243,8 @@ function applyVisualPreferences() {
 
   contrastToggle.classList.toggle("is-active", highContrastEnabled);
   contrastToggle.setAttribute("aria-pressed", String(highContrastEnabled));
+  dyslexiaToggle.classList.toggle("is-active", dyslexiaFontEnabled);
+  dyslexiaToggle.setAttribute("aria-pressed", String(dyslexiaFontEnabled));
   autoSpeakToggle.classList.toggle("is-active", autoSpeakEnabled);
   autoSpeakToggle.setAttribute("aria-pressed", String(autoSpeakEnabled));
   colorToggle.classList.toggle("is-active", coloredSyllablesEnabled);
@@ -193,6 +253,7 @@ function applyVisualPreferences() {
   themeSelect.value = selectedTheme;
   summaryTheme.textContent = themeConfig[selectedTheme].label;
   themeDescription.textContent = themeConfig[selectedTheme].description;
+  versionLabel.textContent = `Versão atual da interface: ${APP_VERSION}`;
 }
 
 function updateDifficultyButtons() {
@@ -254,13 +315,11 @@ function getFilteredOptions(length) {
 
 function pickRandomSentence(length) {
   const options = getFilteredOptions(length);
-
   if (options.length === 1) {
     return options[0];
   }
 
   let nextSentence = options[Math.floor(Math.random() * options.length)];
-
   while (nextSentence === lastSentenceByGroup[selectedDifficulty][selectedTheme][length]) {
     nextSentence = options[Math.floor(Math.random() * options.length)];
   }
@@ -276,7 +335,7 @@ function activateSyllable(button) {
   button.classList.add("is-playing");
 }
 
-function renderSentence() {
+function renderSentence({ trackProgress = true } = {}) {
   const sentence = toDisplayUppercase(input.value).trim();
   input.value = sentence;
   output.innerHTML = "";
@@ -285,6 +344,7 @@ function renderSentence() {
     updateStudySummary([]);
     status.textContent = "Digite uma frase em português para separar as sílabas.";
     output.innerHTML = '<p class="placeholder">A frase separada aparecerá aqui.</p>';
+    syncFavoriteButton();
     return;
   }
 
@@ -312,6 +372,8 @@ function renderSentence() {
       syllableButton.setAttribute("aria-label", `Ouvir sílaba ${syllable}`);
       syllableButton.addEventListener("click", () => {
         activateSyllable(syllableButton);
+        recordSyllableClick();
+        renderLocalProgress();
         status.textContent = `Reproduzindo a sílaba "${syllable}".`;
         speakText(syllable);
       });
@@ -335,11 +397,23 @@ function renderSentence() {
 
   output.append(fragment);
   updateStudySummary(tokens);
+
+  if (trackProgress) {
+    recordPhraseProcessed(sentence, {
+      theme: selectedTheme,
+      difficulty: selectedDifficulty,
+    });
+    renderLocalProgress();
+  } else {
+    syncFavoriteButton();
+  }
+
   status.textContent =
     'Frase processada. Toque em uma sílaba, ou dê dois cliques em uma palavra para ouvi-la inteira.';
 }
 
 function processRandomSentence(length) {
+  recordRandomSentence(length);
   input.value = pickRandomSentence(length);
   renderSentence();
   const themeLabel = themeConfig[selectedTheme].label.toLocaleLowerCase("pt-BR");
@@ -354,23 +428,17 @@ function processRandomSentence(length) {
 async function toggleFullscreen() {
   if (!document.fullscreenElement) {
     await document.documentElement.requestFullscreen();
-    fullscreenButton.textContent = "Sair da tela cheia";
     status.textContent = "Modo tela cheia ativado.";
     return;
   }
 
   await document.exitFullscreen();
-  fullscreenButton.textContent = "Tela cheia";
   status.textContent = "Modo tela cheia desativado.";
 }
 
-document.addEventListener("fullscreenchange", () => {
-  fullscreenButton.textContent = document.fullscreenElement
-    ? "Sair da tela cheia"
-    : "Tela cheia";
+processButton.addEventListener("click", () => {
+  renderSentence();
 });
-
-processButton.addEventListener("click", renderSentence);
 randomShortButton.addEventListener("click", () => {
   processRandomSentence("short");
 });
@@ -380,6 +448,19 @@ randomLongButton.addEventListener("click", () => {
 speakButton.addEventListener("click", () => {
   status.textContent = "Reproduzindo a frase completa.";
   speakText(input.value);
+});
+favoriteButton.addEventListener("click", () => {
+  const sentence = input.value.trim();
+  if (!sentence) {
+    status.textContent = "Digite ou sorteie uma frase antes de favoritar.";
+    return;
+  }
+
+  const progress = toggleFavoritePhrase(sentence);
+  renderLocalProgress();
+  status.textContent = progress.favoritePhrases.includes(sentence.toLocaleUpperCase("pt-BR"))
+    ? "Frase adicionada aos favoritos."
+    : "Frase removida dos favoritos.";
 });
 fullscreenButton.addEventListener("click", () => {
   toggleFullscreen().catch(() => {
@@ -404,6 +485,15 @@ contrastToggle.addEventListener("click", () => {
     : "Contraste alto desativado.";
 });
 
+dyslexiaToggle.addEventListener("click", () => {
+  dyslexiaFontEnabled = !dyslexiaFontEnabled;
+  applyVisualPreferences();
+  savePreferences();
+  status.textContent = dyslexiaFontEnabled
+    ? "Fonte amigável para leitura ativada."
+    : "Fonte amigável para leitura desativada.";
+});
+
 autoSpeakToggle.addEventListener("click", () => {
   autoSpeakEnabled = !autoSpeakEnabled;
   applyVisualPreferences();
@@ -417,7 +507,7 @@ colorToggle.addEventListener("click", () => {
   coloredSyllablesEnabled = !coloredSyllablesEnabled;
   applyVisualPreferences();
   savePreferences();
-  renderSentence();
+  renderSentence({ trackProgress: false });
   status.textContent = coloredSyllablesEnabled
     ? "Colorização das sílabas ativada."
     : "Colorização das sílabas desativada.";
@@ -425,6 +515,14 @@ colorToggle.addEventListener("click", () => {
 
 modeToggle.addEventListener("change", () => {
   selectedMode = modeToggle.checked ? "full" : "child";
+  if (selectedMode === "child") {
+    selectedDifficulty = "easy";
+    selectedTheme = "all";
+    selectedFontScale = "large";
+    autoSpeakEnabled = true;
+    coloredSyllablesEnabled = true;
+    updateDifficultyButtons();
+  }
   applyVisualPreferences();
   savePreferences();
   status.textContent = selectedMode === "child"
@@ -453,6 +551,7 @@ difficultyButtons.hard.addEventListener("click", () => {
 
 input.addEventListener("input", () => {
   input.value = toDisplayUppercase(input.value);
+  syncFavoriteButton();
 });
 
 input.addEventListener("keydown", (event) => {
@@ -462,7 +561,9 @@ input.addEventListener("keydown", (event) => {
 });
 
 loadPreferences();
+recordPageVisit("frases");
 updateDifficultyButtons();
 applyVisualPreferences();
 input.value = toDisplayUppercase(input.value);
-renderSentence();
+renderLocalProgress();
+renderSentence({ trackProgress: false });

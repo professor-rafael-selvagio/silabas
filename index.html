@@ -13,13 +13,17 @@
     <script type="module" src="/main.js"></script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
     <div class="app-shell">
-      <main class="app-card">
+      <main id="main-content" class="app-card">
         <aside class="sidebar">
           <section class="hero">
             <nav class="top-nav" aria-label="Atividades">
               <a class="nav-link is-current" href="./index.html">Frases</a>
               <a class="nav-link" href="./letras.html">Letras e sílabas</a>
+              <a class="nav-link" href="./progresso.html">Progresso</a>
+              <a class="nav-link" href="./responsaveis.html">Responsáveis</a>
+              <a class="nav-link" href="./sobre.html">Sobre</a>
               <a class="nav-link icon-only-link" href="./versions.html" aria-label="Versões">
                 <span aria-hidden="true">🕘</span>
               </a>
@@ -69,6 +73,9 @@
               <div class="toggle-grid">
                 <button id="contrast-toggle" class="toggle-btn" type="button" aria-pressed="false">
                   Contraste alto
+                </button>
+                <button id="dyslexia-toggle" class="toggle-btn" type="button" aria-pressed="false">
+                  Fonte amigável
                 </button>
                 <button id="auto-speak-toggle" class="toggle-btn" type="button" aria-pressed="false">
                   Ouvir ao sortear
@@ -122,6 +129,9 @@
               <button id="speak-btn" class="icon-btn icon-btn-only" type="button" aria-label="Ouvir frase completa">
                 <span aria-hidden="true">🔊</span>
               </button>
+              <button id="favorite-btn" class="icon-btn icon-btn-only" type="button" aria-label="Favoritar frase atual">
+                <span aria-hidden="true">★</span>
+              </button>
               <button id="fullscreen-btn" class="secondary-btn icon-btn-only fullscreen-btn" type="button" aria-label="Tela cheia">
                 <span aria-hidden="true">⛶</span>
               </button>
@@ -135,6 +145,38 @@
               </p>
               <p id="encouragement" class="study-note-highlight">
                 Comece com frases curtas e toque sílaba por sílaba.
+              </p>
+            </section>
+
+            <section class="local-panel" aria-label="Seu progresso local">
+              <div class="local-panel-header">
+                <h2>Seu progresso</h2>
+                <p>Salvo apenas neste navegador.</p>
+              </div>
+              <div class="local-stats">
+                <article class="local-stat-card">
+                  <p class="local-stat-label">Frases</p>
+                  <p id="local-phrases-count" class="local-stat-value">0</p>
+                </article>
+                <article class="local-stat-card">
+                  <p class="local-stat-label">Sílabas ouvidas</p>
+                  <p id="local-syllables-count" class="local-stat-value">0</p>
+                </article>
+                <article class="local-stat-card">
+                  <p class="local-stat-label">Favoritas</p>
+                  <p id="local-favorites-count" class="local-stat-value">0</p>
+                </article>
+              </div>
+              <div class="local-list-block">
+                <p class="local-list-title">Frases favoritas</p>
+                <ul id="favorite-list" class="local-list"></ul>
+              </div>
+              <div class="local-list-block">
+                <p class="local-list-title">Últimas frases</p>
+                <ul id="recent-list" class="local-list"></ul>
+              </div>
+              <p class="keyboard-tip">
+                Dica de teclado: use <kbd>Ctrl</kbd> + <kbd>Enter</kbd> para separar rápido.
               </p>
             </section>
           </section>
@@ -168,7 +210,7 @@
           </section>
           <div id="output" class="output" aria-live="polite"></div>
           <footer class="app-footer">
-            <span>Versão atual da interface: 1.6.3</span>
+            <span>Versão atual da interface: 1.7.0</span>
             <span>Preferências ficam salvas neste navegador.</span>
           </footer>
         </section>

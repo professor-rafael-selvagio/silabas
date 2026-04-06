@@ -20,6 +20,22 @@ body {
   min-height: 100vh;
 }
 
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 20;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #12527f;
+  color: #fff;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
 body.is-modal-open {
   overflow: hidden;
 }
@@ -52,6 +68,9 @@ button {
 }
 
 .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 10px 14px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.92);
@@ -64,6 +83,15 @@ button {
 .nav-link.is-current {
   background: #12527f;
   color: #fff;
+}
+
+.nav-link:focus-visible,
+.lesson-btn:focus-visible,
+.music-btn:focus-visible,
+.close-modal-btn:focus-visible,
+.letter-card:focus-visible {
+  outline: 4px solid rgba(255, 127, 80, 0.28);
+  outline-offset: 3px;
 }
 
 .eyebrow {
@@ -257,6 +285,16 @@ button {
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 14px;
   align-content: start;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .lesson-grid.is-rows {

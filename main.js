@@ -20,6 +20,7 @@ const status = document.querySelector("#status");
 const themeSelect = document.querySelector("#theme-select");
 const contrastToggle = document.querySelector("#contrast-toggle");
 const autoSpeakToggle = document.querySelector("#auto-speak-toggle");
+const colorToggle = document.querySelector("#color-toggle");
 const themeDescription = document.querySelector("#theme-description");
 const encouragement = document.querySelector("#encouragement");
 const summaryTheme = document.querySelector("#summary-theme");
@@ -54,6 +55,7 @@ let selectedTheme = "all";
 let selectedFontScale = "medium";
 let highContrastEnabled = false;
 let autoSpeakEnabled = false;
+let coloredSyllablesEnabled = true;
 let lastSentenceByGroup = Object.keys(sentenceBank).reduce((difficultyAccumulator, difficulty) => {
   difficultyAccumulator[difficulty] = Object.keys(themeConfig).reduce((themeAccumulator, theme) => {
     themeAccumulator[theme] = { short: "", long: "" };
@@ -144,6 +146,7 @@ function loadPreferences() {
     }
     highContrastEnabled = Boolean(preferences.highContrastEnabled);
     autoSpeakEnabled = Boolean(preferences.autoSpeakEnabled);
+    coloredSyllablesEnabled = Boolean(preferences.coloredSyllablesEnabled);
   } catch {
     localStorage.removeItem(preferencesKey);
   }
@@ -156,6 +159,7 @@ function savePreferences() {
     fontScale: selectedFontScale,
     highContrastEnabled,
     autoSpeakEnabled,
+    coloredSyllablesEnabled,
   };
 
   localStorage.setItem(preferencesKey, JSON.stringify(preferences));
@@ -176,6 +180,8 @@ function applyVisualPreferences() {
   contrastToggle.setAttribute("aria-pressed", String(highContrastEnabled));
   autoSpeakToggle.classList.toggle("is-active", autoSpeakEnabled);
   autoSpeakToggle.setAttribute("aria-pressed", String(autoSpeakEnabled));
+  colorToggle.classList.toggle("is-active", coloredSyllablesEnabled);
+  colorToggle.setAttribute("aria-pressed", String(coloredSyllablesEnabled));
   themeSelect.value = selectedTheme;
   summaryTheme.textContent = themeConfig[selectedTheme].label;
   themeDescription.textContent = themeConfig[selectedTheme].description;
@@ -291,6 +297,9 @@ function renderSentence() {
       const syllableButton = document.createElement("button");
       syllableButton.type = "button";
       syllableButton.className = "syllable";
+      if (coloredSyllablesEnabled) {
+        syllableButton.classList.add(`syllable-tone-${index % 4}`);
+      }
       syllableButton.textContent = syllable;
       syllableButton.setAttribute("aria-label", `Ouvir sílaba ${syllable}`);
       syllableButton.addEventListener("click", () => {
@@ -394,6 +403,16 @@ autoSpeakToggle.addEventListener("click", () => {
   status.textContent = autoSpeakEnabled
     ? "As frases sorteadas serão lidas automaticamente."
     : "As frases sorteadas não serão lidas automaticamente.";
+});
+
+colorToggle.addEventListener("click", () => {
+  coloredSyllablesEnabled = !coloredSyllablesEnabled;
+  applyVisualPreferences();
+  savePreferences();
+  renderSentence();
+  status.textContent = coloredSyllablesEnabled
+    ? "Colorização das sílabas ativada."
+    : "Colorização das sílabas desativada.";
 });
 
 Object.entries(fontButtons).forEach(([fontScale, button]) => {

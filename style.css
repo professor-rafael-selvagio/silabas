@@ -300,6 +300,11 @@ textarea {
   color: #fff;
 }
 
+.color-toggle {
+  justify-content: center;
+  font-size: 1.05rem;
+}
+
 textarea {
   width: 100%;
   border: 2px solid rgba(18, 82, 127, 0.15);
@@ -434,6 +439,22 @@ textarea:focus {
   color: #17324d;
   font-size: 1em;
   box-shadow: 0 16px 32px rgba(23, 50, 77, 0.12);
+}
+
+.syllable-tone-0 {
+  background: #fff4c2;
+}
+
+.syllable-tone-1 {
+  background: #dff6ff;
+}
+
+.syllable-tone-2 {
+  background: #e4f8df;
+}
+
+.syllable-tone-3 {
+  background: #ffe3d7;
 }
 
 .syllable.is-playing {

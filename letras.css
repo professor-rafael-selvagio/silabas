@@ -65,6 +65,7 @@ button {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 12px;
+  align-items: flex-start;
 }
 
 .nav-link {
@@ -85,7 +86,53 @@ button {
   color: #fff;
 }
 
+.nav-menu {
+  position: relative;
+}
+
+.nav-menu[open] {
+  z-index: 10;
+}
+
+.nav-menu-trigger {
+  justify-content: center;
+  min-width: 42px;
+  padding-inline: 0;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.nav-menu-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.nav-menu-trigger > span {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.nav-menu-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(18, 82, 127, 0.12);
+  box-shadow: 0 16px 32px rgba(23, 50, 77, 0.12);
+}
+
+.nav-menu-link {
+  width: 100%;
+  justify-content: flex-start;
+}
+
 .nav-link:focus-visible,
+.nav-menu-trigger:focus-visible,
 .lesson-btn:focus-visible,
 .music-btn:focus-visible,
 .close-modal-btn:focus-visible,
@@ -389,6 +436,11 @@ button {
 
   .lesson-footer {
     flex-direction: column;
+  }
+
+  .nav-menu-popover {
+    left: 0;
+    right: auto;
   }
 
   .music-modal {

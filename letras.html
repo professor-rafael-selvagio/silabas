@@ -20,10 +20,18 @@
           <nav class="top-nav" aria-label="Atividades">
             <a class="nav-link" href="./index.html">Frases</a>
             <a class="nav-link is-current" href="./letras.html">Letras e sílabas</a>
-            <a class="nav-link" href="./progresso.html">Progresso</a>
-            <a class="nav-link" href="./responsaveis.html">Responsáveis</a>
-            <a class="nav-link" href="./sobre.html">Sobre</a>
-            <a class="nav-link" href="./versions.html">Versões</a>
+            <details class="nav-menu">
+              <summary class="nav-link nav-menu-trigger" aria-label="Mais opções">
+                <span aria-hidden="true">⋮</span>
+              </summary>
+              <div class="nav-menu-popover">
+                <a class="nav-link nav-menu-link" href="./progresso.html">Progresso</a>
+                <a class="nav-link nav-menu-link" href="./responsaveis.html">Responsáveis</a>
+                <a class="nav-link nav-menu-link" href="./sobre.html">Sobre</a>
+                <a class="nav-link nav-menu-link" href="./autor.html">Autor</a>
+                <a class="nav-link nav-menu-link" href="./versions.html">Versões</a>
+              </div>
+            </details>
           </nav>
           <p class="eyebrow">Alfabetização infantil</p>
           <h1>Letras e sílabas</h1>
@@ -52,9 +60,21 @@
               <span aria-hidden="true">🎵</span>
               <span>Alfabeto</span>
             </button>
+            <button class="music-btn" type="button" data-song="aeiou">
+              <span aria-hidden="true">🔤</span>
+              <span>AEIOU</span>
+            </button>
             <button class="music-btn" type="button" data-song="abelha">
               <span aria-hidden="true">🐝</span>
               <span>Abelha</span>
+            </button>
+            <button class="music-btn" type="button" data-song="bibu">
+              <span aria-hidden="true">🫧</span>
+              <span>Bibu</span>
+            </button>
+            <button class="music-btn" type="button" data-song="rimadosapato">
+              <span aria-hidden="true">👟</span>
+              <span>Rima do Sapato</span>
             </button>
             <button class="music-btn" type="button" data-song="trembabe">
               <span aria-hidden="true">🚂</span>
@@ -100,7 +120,7 @@
         </div>
 
         <footer class="lesson-footer">
-          <span class="page-version">Versão atual da interface: 1.7.1</span>
+          <span class="page-version">Versão atual da interface: 1.7.3</span>
           <span>Conteúdo visual para apoio à alfabetização.</span>
         </footer>
       </main>

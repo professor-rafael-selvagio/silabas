@@ -66,10 +66,25 @@ const songCatalog = {
     audioUrl: new URL("./audio/alfabeto.mp3", import.meta.url),
     lyricsUrl: new URL("./audio/alfabeto.txt", import.meta.url),
   },
+  aeiou: {
+    title: "AEIOU",
+    audioUrl: new URL("./audio/aeiou.mp3", import.meta.url),
+    lyricsUrl: new URL("./audio/aeiou.txt", import.meta.url),
+  },
   abelha: {
     title: "Abelha",
     audioUrl: new URL("./audio/abelha.mp3", import.meta.url),
     lyricsUrl: new URL("./audio/abelha.txt", import.meta.url),
+  },
+  bibu: {
+    title: "Bibu",
+    audioUrl: new URL("./audio/bibu.mp3", import.meta.url),
+    lyricsUrl: new URL("./audio/bibu.txt", import.meta.url),
+  },
+  rimadosapato: {
+    title: "Rima do Sapato",
+    audioUrl: new URL("./audio/rimadosapato.mp3", import.meta.url),
+    lyricsUrl: new URL("./audio/rimadosapato.txt", import.meta.url),
   },
   trembabe: {
     title: "Trem Babê",

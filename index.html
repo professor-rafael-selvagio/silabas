@@ -21,12 +21,18 @@
             <nav class="top-nav" aria-label="Atividades">
               <a class="nav-link is-current" href="./index.html">Frases</a>
               <a class="nav-link" href="./letras.html">Letras e sílabas</a>
-              <a class="nav-link" href="./progresso.html">Progresso</a>
-              <a class="nav-link" href="./responsaveis.html">Responsáveis</a>
-              <a class="nav-link" href="./sobre.html">Sobre</a>
-              <a class="nav-link icon-only-link" href="./versions.html" aria-label="Versões">
-                <span aria-hidden="true">🕘</span>
-              </a>
+              <details class="nav-menu">
+                <summary class="nav-link nav-menu-trigger" aria-label="Mais opções">
+                  <span aria-hidden="true">⋮</span>
+                </summary>
+                <div class="nav-menu-popover">
+                  <a class="nav-link nav-menu-link" href="./progresso.html">Progresso</a>
+                  <a class="nav-link nav-menu-link" href="./responsaveis.html">Responsáveis</a>
+                  <a class="nav-link nav-menu-link" href="./sobre.html">Sobre</a>
+                  <a class="nav-link nav-menu-link" href="./autor.html">Autor</a>
+                  <a class="nav-link nav-menu-link" href="./versions.html">Versões</a>
+                </div>
+              </details>
             </nav>
             <label class="mode-switch" for="mode-toggle" aria-label="Modo da interface">
               <span class="mode-label">Criança</span>
@@ -210,7 +216,7 @@
           </section>
           <div id="output" class="output" aria-live="polite"></div>
           <footer class="app-footer">
-            <span>Versão atual da interface: 1.7.1</span>
+            <span>Versão atual da interface: 1.7.3</span>
             <span>Preferências ficam salvas neste navegador.</span>
           </footer>
         </section>

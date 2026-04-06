@@ -11,6 +11,7 @@ export default defineConfig({
         progresso: resolve(__dirname, "progresso.html"),
         responsaveis: resolve(__dirname, "responsaveis.html"),
         sobre: resolve(__dirname, "sobre.html"),
+        autor: resolve(__dirname, "autor.html"),
         versions: resolve(__dirname, "versions.html"),
       },
     },

@@ -21,10 +21,18 @@
           <nav class="top-nav" aria-label="Atividades">
             <a class="nav-link" href="./index.html">Frases</a>
             <a class="nav-link" href="./letras.html">Letras e sílabas</a>
-            <a class="nav-link" href="./progresso.html">Progresso</a>
-            <a class="nav-link" href="./responsaveis.html">Responsáveis</a>
-            <a class="nav-link" href="./sobre.html">Sobre</a>
-            <a class="nav-link is-current" href="./versions.html">Versões</a>
+            <details class="nav-menu" open>
+              <summary class="nav-link nav-menu-trigger" aria-label="Mais opções">
+                <span aria-hidden="true">⋮</span>
+              </summary>
+              <div class="nav-menu-popover">
+                <a class="nav-link nav-menu-link" href="./progresso.html">Progresso</a>
+                <a class="nav-link nav-menu-link" href="./responsaveis.html">Responsáveis</a>
+                <a class="nav-link nav-menu-link" href="./sobre.html">Sobre</a>
+                <a class="nav-link nav-menu-link" href="./autor.html">Autor</a>
+                <a class="nav-link nav-menu-link is-current" href="./versions.html">Versões</a>
+              </div>
+            </details>
           </nav>
           <p class="eyebrow">Evolução do projeto</p>
           <h1>Resumo das versões</h1>
@@ -60,6 +68,32 @@
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td><span class="version-badge">1.7.3</span></td>
+                  <td>Documentação</td>
+                  <td>Página do autor e QR Codes</td>
+                  <td>
+                    Criação da página <strong>Autor</strong> com foto, apresentação do Professor
+                    Rafael Selvagio, tecnologias utilizadas no projeto, link para o GitHub do
+                    autor, link para o repositório e QR Codes para ambos.
+                  </td>
+                  <td>
+                    Valoriza a autoria do projeto e facilita o acesso ao perfil e ao código-fonte.
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="version-badge">1.7.2</span></td>
+                  <td>Interface</td>
+                  <td>Navegação principal reorganizada</td>
+                  <td>
+                    A navegação passou a destacar apenas <strong>Frases</strong> e
+                    <strong>Letras e sílabas</strong> como acessos principais, levando as demais
+                    páginas para um menu expansível com três pontinhos na vertical.
+                  </td>
+                  <td>
+                    Deixa a interface mais limpa e reforça o foco nas duas atividades centrais.
+                  </td>
+                </tr>
                 <tr>
                   <td><span class="version-badge">1.7.1</span></td>
                   <td>Conteúdo</td>

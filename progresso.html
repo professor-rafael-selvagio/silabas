@@ -21,10 +21,18 @@
           <nav class="top-nav" aria-label="Atividades">
             <a class="nav-link" href="./index.html">Frases</a>
             <a class="nav-link" href="./letras.html">Letras e sílabas</a>
-            <a class="nav-link is-current" href="./progresso.html">Progresso</a>
-            <a class="nav-link" href="./responsaveis.html">Responsáveis</a>
-            <a class="nav-link" href="./sobre.html">Sobre</a>
-            <a class="nav-link" href="./versions.html">Versões</a>
+            <details class="nav-menu" open>
+              <summary class="nav-link nav-menu-trigger" aria-label="Mais opções">
+                <span aria-hidden="true">⋮</span>
+              </summary>
+              <div class="nav-menu-popover">
+                <a class="nav-link nav-menu-link is-current" href="./progresso.html">Progresso</a>
+                <a class="nav-link nav-menu-link" href="./responsaveis.html">Responsáveis</a>
+                <a class="nav-link nav-menu-link" href="./sobre.html">Sobre</a>
+                <a class="nav-link nav-menu-link" href="./autor.html">Autor</a>
+                <a class="nav-link nav-menu-link" href="./versions.html">Versões</a>
+              </div>
+            </details>
           </nav>
           <p class="eyebrow">Persistência local</p>
           <h1>Progresso no navegador</h1>
@@ -76,7 +84,7 @@
         </div>
 
         <footer class="page-footer">
-          <span class="page-version">Versão atual da interface: 1.7.0</span>
+          <span class="page-version">Versão atual da interface: 1.7.3</span>
           <span>Nada daqui é enviado para servidor.</span>
         </footer>
       </main>

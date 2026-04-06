@@ -1,0 +1,156 @@
+:root {
+  font-family: "Nunito", sans-serif;
+  color: #17324d;
+  background:
+    radial-gradient(circle at top, rgba(255, 222, 138, 0.9), transparent 30%),
+    linear-gradient(180deg, #fff6dd 0%, #dff3ff 52%, #c7f3dc 100%);
+  --card: rgba(255, 255, 255, 0.86);
+  --card-border: rgba(22, 91, 140, 0.16);
+  --ink-soft: #49637d;
+  --secondary: #2f9e8f;
+  --accent: #ff7f50;
+  --shadow: 0 24px 60px rgba(23, 50, 77, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+.history-shell {
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.history-page {
+  min-height: calc(100vh - 36px);
+  display: grid;
+  gap: 18px;
+  background: var(--card);
+  border: 2px solid var(--card-border);
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.nav-link {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 2px solid rgba(18, 82, 127, 0.12);
+  color: #12527f;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.nav-link.is-current {
+  background: #12527f;
+  color: #fff;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+}
+
+.history-hero h1,
+.timeline-card h2 {
+  margin: 0;
+  font-family: "Baloo 2", cursive;
+  line-height: 0.95;
+}
+
+.history-hero h1 {
+  font-size: clamp(2.3rem, 4vw, 4rem);
+  color: #12527f;
+}
+
+.history-copy,
+.timeline-card p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.history-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.quick-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 24px rgba(23, 50, 77, 0.08);
+  text-decoration: none;
+  font-weight: 800;
+  color: #12527f;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.timeline-card {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 247, 214, 0.82), rgba(255, 255, 255, 0.96)),
+    #fff;
+  box-shadow: 0 14px 28px rgba(23, 50, 77, 0.1);
+}
+
+.timeline-card h2 {
+  font-size: 1.6rem;
+  color: #12527f;
+}
+
+.timeline-step {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 720px) {
+  .history-shell {
+    padding: 12px;
+  }
+
+  .history-page {
+    min-height: calc(100vh - 24px);
+    padding: 16px;
+    border-radius: 24px;
+  }
+
+  .history-links > * {
+    width: 100%;
+  }
+}

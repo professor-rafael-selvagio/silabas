@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         letras: resolve(__dirname, "letras.html"),
+        versions: resolve(__dirname, "versions.html"),
       },
     },
   },

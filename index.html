@@ -15,69 +15,74 @@
   <body>
     <div class="app-shell">
       <main class="app-card">
-        <section class="hero">
-          <nav class="top-nav" aria-label="Atividades">
-            <a class="nav-link is-current" href="./index.html">Sílabas</a>
-            <a class="nav-link" href="./letras.html">Letras e sílabas</a>
-          </nav>
-          <p class="eyebrow">Alfabetização infantil</p>
-          <h1>Sílabas Divertidas</h1>
-          <p class="hero-copy">
-            Digite uma frase e toque nas sílabas para ouvir cada pedaço da palavra.
-          </p>
-        </section>
+        <aside class="sidebar">
+          <section class="hero">
+            <nav class="top-nav" aria-label="Atividades">
+              <a class="nav-link is-current" href="./index.html">Sílabas</a>
+              <a class="nav-link" href="./letras.html">Letras e sílabas</a>
+            </nav>
+            <p class="eyebrow">Alfabetização infantil</p>
+            <h1>Sílabas Divertidas</h1>
+            <p class="hero-copy">
+              Digite uma frase e toque nas sílabas para ouvir cada pedaço da palavra.
+            </p>
+          </section>
 
-        <section class="controls">
-          <div class="difficulty-panel" aria-label="Escolha o nível">
-            <p class="difficulty-title">Nível de dificuldade</p>
-            <div class="difficulty-row">
-              <button id="difficulty-easy" class="difficulty-btn is-active" type="button">
-                Fácil
+          <section class="controls">
+            <div class="difficulty-panel" aria-label="Escolha o nível">
+              <p class="difficulty-title">Nível de dificuldade</p>
+              <div class="difficulty-row">
+                <button id="difficulty-easy" class="difficulty-btn is-active" type="button">
+                  Fácil
+                </button>
+                <button id="difficulty-medium" class="difficulty-btn" type="button">
+                  Média
+                </button>
+                <button id="difficulty-hard" class="difficulty-btn" type="button">
+                  Difícil
+                </button>
+              </div>
+            </div>
+
+            <div class="button-row button-row-top">
+              <button id="random-short-btn" class="secondary-btn" type="button">
+                Frase curta
               </button>
-              <button id="difficulty-medium" class="difficulty-btn" type="button">
-                Média
-              </button>
-              <button id="difficulty-hard" class="difficulty-btn" type="button">
-                Difícil
+              <button id="random-long-btn" class="secondary-btn" type="button">
+                Frase maior
               </button>
             </div>
-          </div>
 
-          <div class="button-row button-row-top">
-            <button id="random-short-btn" class="secondary-btn" type="button">
-              Frase curta
-            </button>
-            <button id="random-long-btn" class="secondary-btn" type="button">
-              Frase maior
-            </button>
-          </div>
-
-          <label class="input-label" for="sentence-input">Frase em português</label>
-          <div class="input-row">
-            <textarea
-              id="sentence-input"
-              rows="3"
-              maxlength="220"
-              placeholder="EXEMPLO: A BOLA É AZUL."
-            >A BOLA É AZUL.</textarea>
-          </div>
-          <div class="button-row">
-            <button id="process-btn" class="primary-btn" type="button">Separar sílabas</button>
-            <button id="speak-btn" class="icon-btn" type="button" aria-label="Ouvir frase completa">
-              <span aria-hidden="true">🔊</span>
-              <span>Ouvir frase</span>
-            </button>
-            <button id="fullscreen-btn" class="secondary-btn" type="button">
-              Tela cheia
-            </button>
-          </div>
-          <p id="status" class="status">Toque em "Separar sílabas" para atualizar a frase.</p>
-        </section>
+            <label class="input-label" for="sentence-input">Frase em português</label>
+            <div class="input-row">
+              <textarea
+                id="sentence-input"
+                rows="3"
+                maxlength="220"
+                placeholder="EXEMPLO: A BOLA É AZUL."
+              >A BOLA É AZUL.</textarea>
+            </div>
+            <div class="button-row">
+              <button id="process-btn" class="primary-btn" type="button">Separar sílabas</button>
+              <button id="speak-btn" class="icon-btn" type="button" aria-label="Ouvir frase completa">
+                <span aria-hidden="true">🔊</span>
+                <span>Ouvir frase</span>
+              </button>
+              <button id="fullscreen-btn" class="secondary-btn" type="button">
+                Tela cheia
+              </button>
+            </div>
+            <p id="status" class="status">Toque em "Separar sílabas" para atualizar a frase.</p>
+          </section>
+        </aside>
 
         <section class="output-panel">
           <div class="panel-header">
-            <h2>Resultado</h2>
-            <p>Toque em qualquer sílaba para ouvir.</p>
+            <div>
+              <h2>Resultado</h2>
+              <p>Toque em qualquer sílaba para ouvir.</p>
+            </div>
+            <p class="panel-tip">A área abaixo é o foco principal da atividade.</p>
           </div>
           <div id="output" class="output" aria-live="polite"></div>
         </section>

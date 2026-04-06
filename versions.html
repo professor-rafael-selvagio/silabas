@@ -24,88 +24,119 @@
           <p class="eyebrow">Evolução do projeto</p>
           <h1>Resumo das versões</h1>
           <p class="history-copy">
-            Esta página reúne as principais mudanças feitas no projeto até agora, para
-            acompanhar a evolução e publicar junto no GitHub Pages.
+            Histórico das entregas no formato usado em software, com numeração de versão e
+            listagem em ordem decrescente.
           </p>
         </header>
 
-        <section class="history-links">
+        <section class="history-links" aria-label="Atalhos rápidos">
           <a class="quick-link" href="./index.html">Abrir página de sílabas</a>
           <a class="quick-link" href="./letras.html">Abrir letras e sílabas</a>
         </section>
 
-        <section class="timeline" aria-label="Linha do tempo das versões">
-          <article class="timeline-card">
-            <p class="timeline-step">Versão 1</p>
-            <h2>Página principal de sílabas</h2>
+        <section class="versions-panel" aria-label="Tabela de versões">
+          <div class="panel-intro">
+            <h2>Histórico do projeto</h2>
             <p>
-              Estrutura inicial da atividade com separação silábica, leitura em voz alta e
-              geração de frases de exemplo.
+              A tabela abaixo mostra a evolução funcional do sistema da versão mais recente para
+              a mais antiga.
             </p>
-          </article>
+          </div>
 
-          <article class="timeline-card">
-            <p class="timeline-step">Versão 2</p>
-            <h2>Tela de letras e sílabas</h2>
-            <p>
-              Inclusão da página complementar para praticar letras maiúsculas, minúsculas e
-              famílias silábicas em formato visual.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <p class="timeline-step">Versão 3</p>
-            <h2>Mais famílias silábicas</h2>
-            <p>
-              Expansão do conteúdo da prática com novas combinações de sílabas, deixando a
-              atividade mais completa para treino.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <p class="timeline-step">Versão 4</p>
-            <h2>Ajuste de layout para caber melhor na tela</h2>
-            <p>
-              Refinos para melhorar o uso do espaço e tornar a navegação mais confortável em
-              diferentes tamanhos de tela.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <p class="timeline-step">Versão 5</p>
-            <h2>Foco visual na área das sílabas</h2>
-            <p>
-              Reorganização do layout principal para desktop com controles em uma coluna lateral
-              e o resultado das sílabas em destaque como área principal.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <p class="timeline-step">Versão 6</p>
-            <h2>Correção do alfabeto</h2>
-            <p>
-              Inclusão das letras <strong>K</strong>, <strong>W</strong> e <strong>Y</strong>,
-              completando a grade de letras da página de apoio.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <p class="timeline-step">Versão 7</p>
-            <h2>Banco de frases ampliado</h2>
-            <p>
-              Aumento do conjunto de frases para cerca de 50 opções por categoria de nível e
-              tamanho, reduzindo repetições durante o uso.
-            </p>
-          </article>
-
-          <article class="timeline-card">
-            <p class="timeline-step">Versão 8</p>
-            <h2>Frases em arquivo separado</h2>
-            <p>
-              Criação de um arquivo dedicado para o banco de frases, deixando a lógica da
-              aplicação mais limpa e facilitando futuras expansões.
-            </p>
-          </article>
+          <div class="table-wrap">
+            <table class="versions-table">
+              <thead>
+                <tr>
+                  <th scope="col">Versão</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Entrega</th>
+                  <th scope="col">Resumo</th>
+                  <th scope="col">Impacto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="version-badge">1.3.0</span></td>
+                  <td>Documentação</td>
+                  <td>Página de versões</td>
+                  <td>
+                    Criação de uma página pública para resumir a evolução do projeto e facilitar
+                    consulta no GitHub Pages.
+                  </td>
+                  <td>Melhora a rastreabilidade e a apresentação do sistema.</td>
+                </tr>
+                <tr>
+                  <td><span class="version-badge">1.2.0</span></td>
+                  <td>Conteúdo</td>
+                  <td>Banco de frases ampliado</td>
+                  <td>
+                    Expansão para cerca de 50 frases por nível e por tamanho, com separação do
+                    conteúdo em arquivo dedicado.
+                  </td>
+                  <td>Reduz repetição e facilita manutenção do conteúdo.</td>
+                </tr>
+                <tr>
+                  <td><span class="version-badge">1.1.1</span></td>
+                  <td>Correção</td>
+                  <td>Alfabeto completo</td>
+                  <td>
+                    Inclusão das letras <strong>K</strong>, <strong>W</strong> e
+                    <strong>Y</strong> na tela de letras.
+                  </td>
+                  <td>Corrige a grade pedagógica do alfabeto.</td>
+                </tr>
+                <tr>
+                  <td><span class="version-badge">1.1.0</span></td>
+                  <td>Interface</td>
+                  <td>Layout com foco no resultado</td>
+                  <td>
+                    Reorganização visual da tela principal com controles em coluna lateral e área
+                    de sílabas em maior destaque.
+                  </td>
+                  <td>Melhora leitura, uso do espaço e foco pedagógico.</td>
+                </tr>
+                <tr>
+                  <td><span class="version-badge">1.0.3</span></td>
+                  <td>Interface</td>
+                  <td>Ajustes de aproveitamento de tela</td>
+                  <td>
+                    Refinos de layout para distribuir melhor os blocos e tornar a navegação mais
+                    confortável em diferentes resoluções.
+                  </td>
+                  <td>Deixa a experiência mais equilibrada no desktop e no mobile.</td>
+                </tr>
+                <tr>
+                  <td><span class="version-badge">1.0.2</span></td>
+                  <td>Conteúdo</td>
+                  <td>Mais famílias silábicas</td>
+                  <td>
+                    Ampliação das combinações silábicas apresentadas na página de apoio visual.
+                  </td>
+                  <td>Aumenta a cobertura do treino de leitura.</td>
+                </tr>
+                <tr>
+                  <td><span class="version-badge">1.0.1</span></td>
+                  <td>Funcionalidade</td>
+                  <td>Página de letras e sílabas</td>
+                  <td>
+                    Inclusão da tela complementar com letras maiúsculas, minúsculas e famílias
+                    silábicas clicáveis.
+                  </td>
+                  <td>Expande o projeto além da separação silábica da frase.</td>
+                </tr>
+                <tr>
+                  <td><span class="version-badge">1.0.0</span></td>
+                  <td>Base</td>
+                  <td>Primeira versão da atividade</td>
+                  <td>
+                    Estrutura inicial da página principal com entrada de frase, separação silábica
+                    e áudio por clique.
+                  </td>
+                  <td>Estabelece a base funcional do projeto.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
       </main>
     </div>

@@ -2,6 +2,7 @@ import "./style.css";
 import Hypher from "hypher";
 import portuguese from "hyphenation.pt";
 import { sentenceBank, themeConfig } from "./sentences.js";
+import { initNavMenus } from "./nav-menu.js";
 import {
   APP_VERSION,
   loadProgressData,
@@ -561,6 +562,7 @@ input.addEventListener("keydown", (event) => {
 });
 
 loadPreferences();
+initNavMenus();
 recordPageVisit("frases");
 updateDifficultyButtons();
 applyVisualPreferences();

@@ -1,5 +1,6 @@
 import "./letras.css";
 import { APP_VERSION, recordPageVisit, recordSongPlay } from "./app-data.js";
+import { initNavMenus } from "./nav-menu.js";
 
 const lessonGrid = document.querySelector("#lesson-grid");
 const lessonTitle = document.querySelector("#lesson-title");
@@ -234,5 +235,6 @@ document.addEventListener("keydown", (event) => {
 });
 
 setActiveLesson("letters");
+initNavMenus();
 recordPageVisit("letras");
 versionLabel.textContent = `Versão atual da interface: ${APP_VERSION}`;
